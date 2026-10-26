@@ -729,6 +729,109 @@ details li { margin: 0.5rem 0; }
 .dissent-list li { margin-bottom: 0.5rem; font-size: 0.95rem; }
 .dissent-date { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
 
+/* ---------- Ordinance history link (Agendas page) ---------- */
+.tag-link {
+  display: inline-block;
+  margin: 0.15rem 0.35rem 0 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-underline-offset: 2px;
+}
+
+/* ---------- Ordinances page ---------- */
+.ord-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.ord-filters fieldset { margin: 0; }
+.ord-filters .options { flex-direction: row; flex-wrap: wrap; gap: 0.4rem; }
+
+.ord-filters .option label {
+  padding: 0.35rem 0.8rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+}
+
+.ord-filters .option input:checked + label { border-color: var(--ink); }
+
+.ord-filters .check { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+.ord-filters .check input { width: 1.1rem; height: 1.1rem; accent-color: var(--ink); }
+
+.ordinance {
+  --accent: var(--navy);
+  margin-bottom: 1.25rem;
+  padding: 1.25rem;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  scroll-margin-top: 1rem;
+}
+
+.ordinance.county { --accent: var(--forest); }
+.ordinance.highlight { box-shadow: 0 0 0 4px #e0a526; }
+
+.ordinance-label {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.ordinance h2 {
+  margin: 0.2rem 0 0.5rem;
+  padding: 0;
+  border: 0;
+  font-size: 1.3rem;
+}
+
+.ordinance-status { margin: 0 0 0.5rem; }
+
+.status {
+  display: inline-block;
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.status.adopted { background: var(--ink); color: var(--paper); }
+.status.upcoming { background: var(--gold-soft); color: var(--gold); border: 1px solid var(--gold); }
+.status.pending { border: 1px solid var(--muted); color: var(--muted); }
+.status.failed { border: 1px solid var(--red); color: var(--red); }
+
+.timeline {
+  margin: 0.75rem 0 0;
+  padding: 0 0 0 1rem;
+  list-style: none;
+  border-left: 2px solid var(--line);
+}
+
+.timeline li { position: relative; margin-bottom: 0.6rem; }
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1rem - 6px);
+  top: 0.45rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline-date { display: block; font-size: 0.8rem; font-weight: 700; color: var(--muted); }
+.timeline-link { margin-left: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+
 /* ---------- Footer ---------- */
 .site-footer {
   max-width: var(--max);

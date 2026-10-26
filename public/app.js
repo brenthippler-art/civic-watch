@@ -1,3 +1,5 @@
+import { ordinanceInfo } from "./ordinance-key.js";
+
 const TODAY = new Date().toLocaleDateString("en-CA"); // "2026-10-25", local time
 const PAST_DAYS = 60;
 const PAST_CUTOFF = (() => {
@@ -124,15 +126,19 @@ function voteHtml(vote) {
   return `<span class="${cls}">${label} ${yeaCount}–${nayCount}${noVoters}</span>`;
 }
 
-function itemHtml(item, vote) {
+function itemHtml(item, vote, meeting) {
   const reading = readingOf(item);
   const readingTag = reading
     ? `<span class="tag reading">${reading === "first" ? "First reading" : "Second reading"}</span>`
     : "";
-  const topicTags = item.topics
-    .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
-    .join("");
-  const tags = voteHtml(vote) + readingTag + topicTags;
+  const topicTags = item.topics.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+
+  const ordinance = ordinanceInfo(meeting, item);
+  const historyLink = ordinance
+    ? `<a class="tag-link" href="ordinances.html#ord-${ordinance.key}">Ordinance history</a>`
+    : "";
+
+  const tags = voteHtml(vote) + readingTag + topicTags + historyLink;
   return `<li>${escapeHtml(item.text)}${tags ? `<div class="tags">${tags}</div>` : ""}</li>`;
 }
 
@@ -199,8 +205,8 @@ function meetingHtml(meeting) {
   const meetingVotes = votes[meeting.url]?.votes ?? {};
   const minutesUrl = votes[meeting.url]?.minutesUrl;
   // City items match by ordinance/order number; county items by agenda item number.
-  const renderItem = (item) =>
-    itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`]);
+    const renderItem = (item) =>
+    itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`], meeting);
 
   return `
     <article class="meeting ${bodyKey(meeting)}" id="${anchorFor(meeting)}" tabindex="-1">
