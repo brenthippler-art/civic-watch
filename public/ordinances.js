@@ -1,3 +1,4 @@
+import { setOpen, openSectionContaining } from "./disclosure.js";
 import { ordinanceInfo } from "./ordinance-key.js";
 import { escapeHtml, todayString, shortDate, bodyKey, meetingAnchor, readingOf } from "./shared.js";
 
@@ -115,7 +116,7 @@ function ordinanceHtml(ordinance) {
   return `
     <article class="ordinance ${key}" id="ord-${ordinance.key}" tabindex="-1">
       <p class="ordinance-label">${escapeHtml(ordinance.label)} · ${bodyName}</p>
-      <h2>${escapeHtml(ordinance.title)}</h2>
+      <h3>${escapeHtml(ordinance.title)}</h3>
       <p class="ordinance-status">
         <span class="status ${ordinance.status.tone}">${escapeHtml(ordinance.status.label)}</span>
         ${ordinance.voteChanged ? `<span class="tag reading">Vote changed between readings</span>` : ""}
@@ -130,24 +131,35 @@ function ordinanceHtml(ordinance) {
 const form = document.querySelector("#ord-filters");
 let ordinances = [];
 
+// Upcoming votes and ordinances waiting on a vote or minutes.
+const IN_PROGRESS = ["upcoming", "pending"];
+
+function fillSection(id, list, emptyText) {
+  document.getElementById(id).innerHTML =
+    list.map(ordinanceHtml).join("") || `<p class="quiet">${emptyText}</p>`;
+  document.getElementById(`${id}-count`).textContent =
+    `${list.length} ordinance${list.length === 1 ? "" : "s"}`;
+}
+
 function render() {
-  const data = new FormData(form);
-  const body = data.get("body");
-  const progressOnly = data.get("progress") === "on";
+  const body = new FormData(form).get("body");
+  const shown = ordinances.filter((o) => body === "all" || bodyKey(o) === body);
 
-  const shown = ordinances.filter((o) => {
-    const key = o.body.includes("County") ? "county" : "city";
-    if (body !== "all" && key !== body) return false;
-    if (progressOnly && !["upcoming", "pending"].includes(o.status.tone)) return false;
-    return true;
-  });
+  const inProgress = shown.filter((o) => IN_PROGRESS.includes(o.status.tone));
+  const decided = shown.filter((o) => !IN_PROGRESS.includes(o.status.tone));
+  fillSection("ord-progress", inProgress, "No ordinances in progress.");
+  fillSection("ord-decided", decided, "No decided ordinances.");
 
-  document.querySelector("#ordinances").innerHTML =
-    shown.map(ordinanceHtml).join("") || `<p class="quiet">No ordinances match.</p>`;
-
-  const inProgress = shown.filter((o) => ["upcoming", "pending"].includes(o.status.tone)).length;
   document.querySelector("#ord-count").textContent =
-    `Showing ${shown.length} ordinance${shown.length === 1 ? "" : "s"}, ${inProgress} in progress.`;
+    `Showing ${shown.length} ordinance${shown.length === 1 ? "" : "s"}, ${inProgress.length} in progress.`;
+}
+
+// After a filter change, open the sections that have ordinances in them.
+function openSectionsWithResults() {
+  for (const id of ["ord-progress", "ord-decided"]) {
+    const hasResults = Boolean(document.getElementById(id).querySelector(".ordinance"));
+    setOpen(document.querySelector(`[aria-controls="${id}"]`), hasResults);
+  }
 }
 
 function goToLinkedOrdinance() {
@@ -161,6 +173,7 @@ function goToLinkedOrdinance() {
 
   const card = document.getElementById(id);
   if (!card) return;
+  openSectionContaining(card);
   card.scrollIntoView({ block: "start" });
   document.fonts?.ready.then(() => card.scrollIntoView({ block: "start" }));
   card.focus({ preventScroll: true });
@@ -168,7 +181,10 @@ function goToLinkedOrdinance() {
   setTimeout(() => card.classList.remove("highlight"), 2500);
 }
 
-form.addEventListener("change", render);
+form.addEventListener("change", () => {
+  render();
+  openSectionsWithResults();
+});
 window.addEventListener("hashchange", goToLinkedOrdinance);
 
 try {
@@ -186,6 +202,6 @@ try {
   goToLinkedOrdinance();
 } catch (err) {
   console.error("Couldn't load ordinance data:", err);
-  document.querySelector("#ordinances").innerHTML =
-    `<p class="quiet">Ordinance data couldn't be loaded right now. Please try again later.</p>`;
+  document.querySelector("#ord-count").textContent =
+    "Ordinance data couldn't be loaded right now. Please try again later.";
 }

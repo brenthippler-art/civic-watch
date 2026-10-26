@@ -122,8 +122,13 @@
 
     <div class="layout">
       <aside class="sidebar" aria-label="Filters and alerts">
-        <h2 id="filters-heading">Filters</h2>
-        <form id="filters">
+                <h2 id="filters-heading">Filters</h2>
+        <button type="button" class="filters-toggle" aria-expanded="false" aria-controls="filters">
+          <span>Search and filters</span>
+          <span class="toggle-count" id="filters-active"></span>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+        <form id="filters" class="is-collapsed">
           <div class="search">
             <label for="search">Search agenda items</label>
             <input

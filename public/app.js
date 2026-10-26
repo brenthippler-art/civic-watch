@@ -270,9 +270,27 @@ function updateFilterSummaries() {
       `input[name="${current.dataset.filter}"]:checked`,
     );
     const label = checked && form.querySelector(`label[for="${checked.id}"]`);
-    current.textContent = label ? label.textContent.trim() : "";
+        current.textContent = label ? label.textContent.trim() : "";
   }
+
+  // On phones the filters are folded away, so say how many are on: "2 on".
+  const active = [
+    form.elements.body.value !== "all",
+    form.elements.reading.value !== "any",
+    form.querySelector('input[name="topic"]:checked')?.value,
+    form.elements.query.value.trim(),
+  ].filter(Boolean).length;
+  document.querySelector("#filters-active").textContent = active ? `${active} on` : "";
 }
+
+// Tablet and phone: the "Search and filters" row opens and closes the form.
+// (On desktop the button is hidden and the form always shows.)
+const filtersToggle = document.querySelector(".filters-toggle");
+filtersToggle.addEventListener("click", () => {
+  const open = filtersToggle.getAttribute("aria-expanded") !== "true";
+  filtersToggle.setAttribute("aria-expanded", String(open));
+  form.classList.toggle("is-collapsed", !open);
+});
 
 // After a search or filter change, open the sections that have results.
 function openSectionsWithResults() {

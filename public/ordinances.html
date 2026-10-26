@@ -135,13 +135,31 @@
             </div>
           </div>
         </fieldset>
-        <label class="check">
-          <input type="checkbox" name="progress" /> In progress only
-        </label>
       </form>
 
       <p id="ord-count" class="result-count" aria-live="polite"></p>
-      <div id="ordinances"></div>
+
+      <section class="collapsible" aria-labelledby="progress-heading">
+        <h2 id="progress-heading" class="toggle-heading">
+          <button type="button" class="section-toggle" aria-expanded="false" aria-controls="ord-progress">
+            <span>In progress</span>
+            <span class="toggle-count" id="ord-progress-count"></span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div id="ord-progress" class="section-panel" hidden></div>
+      </section>
+
+      <section class="collapsible" aria-labelledby="decided-heading">
+        <h2 id="decided-heading" class="toggle-heading">
+          <button type="button" class="section-toggle" aria-expanded="false" aria-controls="ord-decided">
+            <span>Decided</span>
+            <span class="toggle-count" id="ord-decided-count"></span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+        </h2>
+        <div id="ord-decided" class="section-panel" hidden></div>
+      </section>
     </main>
 
     <footer class="site-footer">
