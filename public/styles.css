@@ -184,6 +184,17 @@ main section:first-of-type h2 { margin-top: 0.5rem; }
   color: var(--muted);
 }
 
+.last-checked {
+  margin: 0 0 0.25rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.last-checked.stale {
+  color: var(--red);
+  font-weight: 700;
+}
+
 /* ---------- Sidebar ---------- */
 .sidebar {
   position: sticky;

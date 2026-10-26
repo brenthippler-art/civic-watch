@@ -17,6 +17,7 @@ import { loadCorrections, applyCorrections } from "./corrections.js";
 import { writeFeeds } from "./feed.js";
 import { sendAgendaAlerts } from "./alerts.js";
 import { extractMeetingTime } from "./meetingTime.js";
+import { writeStatus } from "./status.js";
 
 // ---- Options ----
 // Normal daily run:  node src/index.js
@@ -169,6 +170,15 @@ console.log(votesChanged ? "Vote data updated." : "Vote data unchanged.");
 
 for (const entry of entries) seen.add(entry.doc.url);
 await saveSeen(seen);
+
+// ---- Status (shown on the site as "Last checked …") ----
+await writeStatus({
+  sources: {
+    city: results[0].status === "fulfilled" ? "ok" : "error",
+    county: results[1].status === "fulfilled" ? "ok" : "error",
+  },
+  dataChanged: archiveChanged || votesChanged || feedsChanged,
+});
 
 // ---- Publish ----
 // Test without pushing: node src/index.js --no-publish
