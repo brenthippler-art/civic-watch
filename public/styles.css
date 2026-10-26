@@ -210,6 +210,40 @@ main section:first-of-type h2 { margin-top: 0.5rem; }
 
 .sidebar h2 { margin: 0 0 0.75rem; font-size: 1.35rem; }
 
+.search { margin-bottom: 1.25rem; }
+
+.search label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.search input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+}
+
+.search input:focus-visible { border-color: var(--ink); }
+
+.search-hint { margin: 0.3rem 0 0; font-size: 0.8rem; color: var(--muted); }
+
+mark {
+  padding: 0 0.1em;
+  background: var(--gold-soft);
+  color: inherit;
+  border-bottom: 2px solid var(--gold);
+  border-radius: 2px;
+}
+
 fieldset {
   margin: 0 0 1.25rem;
   padding: 0;

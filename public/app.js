@@ -8,7 +8,7 @@ const PAST_CUTOFF = (() => {
   return d.toLocaleDateString("en-CA");
 })();
 
-const DEFAULT_FILTERS = { body: "all", reading: "any", topic: "" };
+const DEFAULT_FILTERS = { body: "all", reading: "any", topic: "", query: "" };
 let filters = { ...DEFAULT_FILTERS };
 let showOlder = false;
 let meetings = [];
@@ -90,14 +90,44 @@ function readingOf(item) {
   return null;
 }
 
+// ---------- Search ----------
+
+// "Scottsville  Rezoning" -> ["scottsville", "rezoning"]
+function queryTerms() {
+  return filters.query.toLowerCase().split(/\s+/).filter(Boolean);
+}
+
+// Every word must appear somewhere in the item, in any order.
+function matchesQuery(text) {
+  const lower = text.toLowerCase();
+  return queryTerms().every((term) => lower.includes(term));
+}
+
+// Makes search words safe to use inside a regular expression.
+function escapeRegex(text) {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+// Escapes the text and wraps each search match in <mark>.
+function highlight(text) {
+  const terms = queryTerms();
+  if (!terms.length) return escapeHtml(text);
+
+  const pattern = new RegExp(`(${terms.map(escapeRegex).join("|")})`, "gi");
+  return text
+    .split(pattern)
+    .map((part, i) => (i % 2 === 1 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part)))
+    .join("");
+}
+
 function filtersActive() {
-  return filters.topic !== "" || filters.reading !== "any";
+  return filters.topic !== "" || filters.reading !== "any" || filters.query !== "";
 }
 
 function itemMatches(item) {
+  if (filters.query && !matchesQuery(item.text)) return false;
   if (filters.topic && !item.topics.includes(filters.topic)) return false;
-  if (filters.reading !== "any" && readingOf(item) !== filters.reading)
-    return false;
+  if (filters.reading !== "any" && readingOf(item) !== filters.reading) return false;
   // With no item filters on, show just the watchlist hits (the default view).
   if (!filtersActive()) return item.topics.length > 0;
   return true;
@@ -139,7 +169,7 @@ function itemHtml(item, vote, meeting) {
     : "";
 
   const tags = voteHtml(vote) + readingTag + topicTags + historyLink;
-  return `<li>${escapeHtml(item.text)}${tags ? `<div class="tags">${tags}</div>` : ""}</li>`;
+  return `<li>${highlight(item.text)}${tags ? `<div class="tags">${tags}</div>` : ""}</li>`;
 }
 
 const NEW_TAB = `<span class="visually-hidden"> (opens in new tab)</span>`;
@@ -191,7 +221,8 @@ function participateHtml(meeting) {
 function meetingHtml(meeting) {
   if (filters.body !== "all" && bodyKey(meeting) !== filters.body) return "";
 
-  const visible = meeting.items.filter((i) => !i.routine);
+    // While searching, include routine items too, so a search for a name still finds appointments.
+  const visible = filters.query ? meeting.items : meeting.items.filter((i) => !i.routine);
   const matching = visible.filter(itemMatches);
 
   if (filtersActive() && matching.length === 0) return "";
@@ -226,7 +257,7 @@ function meetingHtml(meeting) {
             : `<p class="quiet">Nothing on the watchlist.</p>`
         }
         <details>
-          <summary>All ${visible.length} non-routine items</summary>
+          <summary>All ${visible.length} ${filters.query ? "" : "non-routine "}items</summary>
           <ol>${visible.map(renderItem).join("")}</ol>
         </details>
         <p class="source-links">
@@ -270,6 +301,8 @@ function renderTopicOptions() {
 // ---------- Render ----------
 
 function render() {
+  const searching = filters.query !== "";
+
   const upcomingCards = meetings
     .filter((m) => m.date >= TODAY)
     .sort((a, b) => a.date.localeCompare(b.date))
@@ -277,21 +310,17 @@ function render() {
     .filter(Boolean);
 
   document.querySelector("#upcoming").innerHTML =
-    upcomingCards.join("") ||
-    `<p class="quiet">No upcoming meetings match.</p>`;
+    upcomingCards.join("") || `<p class="quiet">No upcoming meetings match.</p>`;
 
   const past = meetings.filter((m) => m.date < TODAY);
-  const recentCards = past
-    .filter((m) => m.date >= PAST_CUTOFF)
-    .map(meetingHtml)
-    .filter(Boolean);
-  const olderCards = past
-    .filter((m) => m.date < PAST_CUTOFF)
-    .map(meetingHtml)
-    .filter(Boolean);
-  const pastCards = showOlder ? [...recentCards, ...olderCards] : recentCards;
+  const recentCards = past.filter((m) => m.date >= PAST_CUTOFF).map(meetingHtml).filter(Boolean);
+  const olderCards = past.filter((m) => m.date < PAST_CUTOFF).map(meetingHtml).filter(Boolean);
 
-  const toggle = olderCards.length
+  // Searching always covers every meeting, so older ones are included automatically.
+  const includeOlder = showOlder || searching;
+  const pastCards = includeOlder ? [...recentCards, ...olderCards] : recentCards;
+
+  const toggle = olderCards.length && !searching
     ? `<button type="button" id="toggle-older" class="toggle-older" aria-expanded="${showOlder}">
          ${showOlder ? "Hide older meetings" : `Show older meetings (${olderCards.length})`}
        </button>`
@@ -299,33 +328,62 @@ function render() {
 
   document.querySelector("#past").innerHTML =
     (pastCards.join("") ||
-      `<p class="quiet">No past meetings in the last ${PAST_DAYS} days match.</p>`) +
+      `<p class="quiet">${searching ? "No past meetings match." : `No past meetings in the last ${PAST_DAYS} days match.`}</p>`) +
     toggle;
 
   const count = upcomingCards.length + pastCards.length;
-  document.querySelector("#result-count").textContent = showOlder
-    ? `Showing ${count} meeting${count === 1 ? "" : "s"}, including older meetings.`
-    : `Showing ${count} meeting${count === 1 ? "" : "s"} from the last 60 days. Older meetings are at the bottom of the page.`;
+  const meetingsWord = `meeting${count === 1 ? "" : "s"}`;
+  let summary;
+  if (searching) {
+    summary = `${count} ${meetingsWord} with items matching “${filters.query}.”`;
+  } else if (showOlder) {
+    summary = `Showing ${count} ${meetingsWord}, including older meetings.`;
+  } else {
+    summary = `Showing ${count} ${meetingsWord} from the last 60 days. Older meetings are at the bottom of the page.`;
+  }
+  document.querySelector("#result-count").textContent = summary;
 }
+
 // ---------- Events ----------
 
 const form = document.querySelector("#filters");
 
-form.addEventListener("change", () => {
+function readFilters() {
   const data = new FormData(form);
   filters = {
     body: data.get("body"),
     reading: data.get("reading"),
     topic: data.get("topic") ?? "",
+    query: (data.get("query") ?? "").trim(),
   };
+
+  // Keep the search in the address bar, so a search can be shared as a link.
+  const url = filters.query ? `?q=${encodeURIComponent(filters.query)}` : location.pathname;
+  history.replaceState(null, "", url);
+
   render();
+}
+
+// Wait until typing pauses before updating, so results don't redraw on every keystroke.
+let searchTimer;
+form.addEventListener("input", (event) => {
+  if (event.target.name !== "query") return;
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(readFilters, 200);
 });
+
+form.addEventListener("change", readFilters);
+
+// Pressing Enter in the search box would normally submit the form and reload the page.
+form.addEventListener("submit", (event) => event.preventDefault());
 
 function resetFilters() {
   filters = { ...DEFAULT_FILTERS };
   form.elements.body.value = "all";
   form.elements.reading.value = "any";
+  form.elements.query.value = "";
   form.querySelector('input[name="topic"][value=""]').checked = true;
+  history.replaceState(null, "", location.pathname + location.hash);
 }
 
 form.addEventListener("reset", (event) => {
@@ -420,7 +478,15 @@ try {
   ({ meetings } = await meetingsResponse.json());
   votes = votesResponse.ok ? await votesResponse.json() : {};
 
-  renderTopicOptions();
+    renderTopicOptions();
+
+  // A shared search link (?q=rezoning) starts with that search filled in.
+  const sharedQuery = new URLSearchParams(location.search).get("q");
+  if (sharedQuery) {
+    form.elements.query.value = sharedQuery;
+    filters.query = sharedQuery.trim();
+  }
+
   render();
   goToLinkedMeeting(); // jump to #meeting-… if the URL has one
 } catch (err) {

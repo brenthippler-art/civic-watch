@@ -99,6 +99,20 @@
       <aside class="sidebar" aria-label="Filters and alerts">
         <h2 id="filters-heading">Filters</h2>
         <form id="filters">
+          <div class="search">
+            <label for="search">Search agenda items</label>
+            <input
+              type="search"
+              id="search"
+              name="query"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="search-hint"
+            />
+            <p id="search-hint" class="search-hint">
+              For example: rezoning, Scottsville Road, data center
+            </p>
+          </div>
           <fieldset>
             <legend>Government</legend>
             <div class="options">
