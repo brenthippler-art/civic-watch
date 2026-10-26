@@ -1,79 +1,159 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ordinances | Civic Watch</title>
-  <meta name="description" content="Follow Bowling Green and Warren County ordinances from first reading to final vote." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="alternate" type="application/rss+xml" title="Civic Watch: all agendas" href="feeds/all.xml" />
-</head>
-<body>
-  <p id="announcer" class="visually-hidden" aria-live="polite"></p>
-  <a class="skip-link" href="#main">Skip to ordinances</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ordinances | Civic Watch</title>
+    <meta
+      name="description"
+      content="Follow Bowling Green and Warren County ordinances from first reading to final vote."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Civic Watch" />
+    <meta property="og:title" content="Ordinances | Civic Watch" />
+    <meta
+      property="og:description"
+      content="Follow Bowling Green and Warren County ordinances from first reading to final vote."
+    />
+    <meta
+      property="og:url"
+      content="https://civic-watch-three.vercel.app/ordinances.html"
+    />
+    <meta
+      property="og:image"
+      content="https://civic-watch-three.vercel.app/social-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Civic Watch: Bowling Green and Warren County agendas, ordinances, and voting record"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#16263d" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Civic Watch: all agendas"
+      href="feeds/all.xml"
+    />
+  </head>
+  <body>
+    <p id="announcer" class="visually-hidden" aria-live="polite"></p>
+    <a class="skip-link" href="#main">Skip to ordinances</a>
 
-  <header class="masthead">
-    <div class="masthead-inner">
-      <div class="masthead-text">
-        <p class="eyebrow">Bowling Green · Warren County, KY</p>
-        <h1>Ordinances</h1>
-        <p class="tagline">Follow each ordinance from first reading to final vote.</p>
-        <nav class="site-nav" aria-label="Site">
-          <a href="./">Agendas</a>
-          <a href="ordinances.html" aria-current="page">Ordinances</a>
-          <a href="record.html">Voting record</a>
-        </nav>
-      </div>
-
-      <svg class="county-map" viewBox="0 0 200 200" role="img" aria-labelledby="map-title">
-        <title id="map-title">Outline of Warren County, Kentucky, with Bowling Green marked</title>
-        <path
-          d="M97.6,23.3L136.6,60.2L157.8,50.2L166.1,61.6L192,67.9L174.3,120.3L161.3,131.2L141.3,137.6L142.5,145.3L95.3,185.2L97.6,172.5L37.5,163L28.1,141.4L8,93.4L26.9,32.9L24.5,18.7L65.8,14.8L75.2,30.4Z"
-          fill="#4f9a73" stroke="#f6f3ec" stroke-width="5" stroke-linejoin="round" />
-        <circle class="city-pulse" cx="71.1" cy="106.2" r="14" fill="none" stroke="#4f7cb8" stroke-width="5" />
-        <circle cx="71.1" cy="106.2" r="14" fill="#4f7cb8" stroke="#f6f3ec" stroke-width="5" />
-      </svg>
-    </div>
-  </header>
-
-  <main id="main" class="record-page">
-    <p id="last-checked" class="last-checked" hidden></p>
-
-    <form id="ord-filters" class="ord-filters">
-      <fieldset>
-        <legend>Government</legend>
-        <div class="options">
-          <div class="option">
-            <input type="radio" id="ord-body-all" name="body" value="all" checked />
-            <label for="ord-body-all">Both</label>
-          </div>
-          <div class="option">
-            <input type="radio" id="ord-body-city" name="body" value="city" />
-            <label for="ord-body-city">City Commission</label>
-          </div>
-          <div class="option">
-            <input type="radio" id="ord-body-county" name="body" value="county" />
-            <label for="ord-body-county">Fiscal Court</label>
-          </div>
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="masthead-text">
+          <p class="eyebrow">Bowling Green · Warren County, KY</p>
+          <h1>Ordinances</h1>
+          <p class="tagline">
+            Follow each ordinance from first reading to final vote.
+          </p>
+          <nav class="site-nav" aria-label="Site">
+            <a href="./">Agendas</a>
+            <a href="ordinances.html" aria-current="page">Ordinances</a>
+            <a href="record.html">Voting record</a>
+          </nav>
         </div>
-      </fieldset>
-      <label class="check">
-        <input type="checkbox" name="progress" /> In progress only
-      </label>
-    </form>
 
-    <p id="ord-count" class="result-count" aria-live="polite"></p>
-    <div id="ordinances"></div>
-  </main>
+        <svg
+          class="county-map"
+          viewBox="0 0 200 200"
+          role="img"
+          aria-labelledby="map-title"
+        >
+          <title id="map-title">
+            Outline of Warren County, Kentucky, with Bowling Green marked
+          </title>
+          <path
+            d="M97.6,23.3L136.6,60.2L157.8,50.2L166.1,61.6L192,67.9L174.3,120.3L161.3,131.2L141.3,137.6L142.5,145.3L95.3,185.2L97.6,172.5L37.5,163L28.1,141.4L8,93.4L26.9,32.9L24.5,18.7L65.8,14.8L75.2,30.4Z"
+            fill="#4f9a73"
+            stroke="#f6f3ec"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+          <circle
+            class="city-pulse"
+            cx="71.1"
+            cy="106.2"
+            r="14"
+            fill="none"
+            stroke="#4f7cb8"
+            stroke-width="5"
+          />
+          <circle
+            cx="71.1"
+            cy="106.2"
+            r="14"
+            fill="#4f7cb8"
+            stroke="#f6f3ec"
+            stroke-width="5"
+          />
+        </svg>
+      </div>
+    </header>
 
-  <footer class="site-footer">
-    <p>Built automatically from public agendas and minutes, starting January 2026. Ordinances whose first reading happened earlier will only show their later readings. Always check the official documents, linked from each meeting.</p>
-  </footer>
+    <main id="main" class="record-page">
+      <p id="last-checked" class="last-checked" hidden></p>
 
-  <script type="module" src="ordinances.js"></script>
-  <script type="module" src="status.js"></script>
-</body>
+      <form id="ord-filters" class="ord-filters">
+        <fieldset>
+          <legend>Government</legend>
+          <div class="options">
+            <div class="option">
+              <input
+                type="radio"
+                id="ord-body-all"
+                name="body"
+                value="all"
+                checked
+              />
+              <label for="ord-body-all">Both</label>
+            </div>
+            <div class="option">
+              <input type="radio" id="ord-body-city" name="body" value="city" />
+              <label for="ord-body-city">City Commission</label>
+            </div>
+            <div class="option">
+              <input
+                type="radio"
+                id="ord-body-county"
+                name="body"
+                value="county"
+              />
+              <label for="ord-body-county">Fiscal Court</label>
+            </div>
+          </div>
+        </fieldset>
+        <label class="check">
+          <input type="checkbox" name="progress" /> In progress only
+        </label>
+      </form>
+
+      <p id="ord-count" class="result-count" aria-live="polite"></p>
+      <div id="ordinances"></div>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Built automatically from public agendas and minutes, starting January
+        2026. Ordinances whose first reading happened earlier will only show
+        their later readings. Always check the official documents, linked from
+        each meeting.
+      </p>
+    </footer>
+
+    <script type="module" src="ordinances.js"></script>
+    <script type="module" src="status.js"></script>
+  </body>
 </html>

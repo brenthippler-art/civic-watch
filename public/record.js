@@ -58,7 +58,10 @@ const nayCountOf = (vote) => vote.nayCount ?? vote.nays.length;
 
 function buildRecords(body, meetings, votes) {
   const records = new Map(
-    body.roster.map((m) => [m.key, { ...m, cast: 0, yea: 0, nay: 0, abstain: 0, absent: 0, motions: 0, seconds: 0, dissents: [] }])
+    body.roster.map((m) => [
+      m.key,
+      { ...m, cast: 0, yea: 0, nay: 0, abstain: 0, absent: 0, meetingsMissed: 0, motions: 0, seconds: 0, dissents: [] },
+    ])
   );
   const splits = [];
   const unrecognized = new Set();
@@ -82,6 +85,11 @@ function buildRecords(body, meetings, votes) {
       ...procedural.map((vote) => ({ vote, procedural: true, text: vote.description })),
     ];
 
+    // For "meetings missed": how many credited votes this meeting had,
+    // and how many of them each member missed.
+    let creditedVotesHere = 0;
+    const missedHere = new Map();
+
     for (const { vote, procedural: isProcedural, text } of ballots) {
       rollCalls++;
       const context = { meeting, minutesUrl, vote, text, procedural: isProcedural };
@@ -99,6 +107,7 @@ function buildRecords(body, meetings, votes) {
         unattributed++;
         continue;
       }
+      creditedVotesHere++;
 
       const votedThisTime = new Set();
       const tally = (names, field) => {
@@ -121,7 +130,17 @@ function buildRecords(body, meetings, votes) {
       tally(vote.abstain, "abstain");
 
       for (const record of records.values()) {
-        if (!votedThisTime.has(record.key)) record.absent++;
+        if (!votedThisTime.has(record.key)) {
+          record.absent++;
+          missedHere.set(record.key, (missedHere.get(record.key) ?? 0) + 1);
+        }
+      }
+    }
+
+    // Missed every credited vote at this meeting = missed the meeting.
+    if (creditedVotesHere > 0) {
+      for (const record of records.values()) {
+        if (missedHere.get(record.key) === creditedVotesHere) record.meetingsMissed++;
       }
     }
   }
@@ -192,6 +211,17 @@ function splitHtml({ meeting, minutesUrl, vote, text, procedural }) {
     </article>`;
 }
 
+// The Absent stat. Missed a whole meeting: "1 meeting" over "Absent · 2 votes".
+// Only missed some votes: "3 votes" over "Absent".
+function absentStat(record) {
+  const votesWord = record.absent === 1 ? "vote" : "votes";
+  if (!record.meetingsMissed) {
+    return `<div><dt>Absent</dt><dd>${record.absent} <small>${votesWord}</small></dd></div>`;
+  }
+  const meetingsWord = record.meetingsMissed === 1 ? "meeting" : "meetings";
+  return `<div><dt>Absent · ${record.absent} ${votesWord}</dt><dd>${record.meetingsMissed} <small>${meetingsWord}</small></dd></div>`;
+}
+
 function officialHtml(record, bodyKey) {
   const yesRate = record.cast ? Math.round((record.yea / record.cast) * 100) : 0;
   const dissentList = record.dissents.length
@@ -213,7 +243,7 @@ function officialHtml(record, bodyKey) {
         <div><dt>Votes cast</dt><dd>${record.cast}</dd></div>
         <div><dt>Voted yes</dt><dd>${record.yea} <small>(${yesRate}%)</small></dd></div>
         <div><dt>Voted no</dt><dd>${record.nay}</dd></div>
-        <div><dt>Absent</dt><dd>${record.absent}</dd></div>
+        ${absentStat(record)}
         <div><dt>Motions made</dt><dd>${record.motions}</dd></div>
         <div><dt>Seconds</dt><dd>${record.seconds}</dd></div>
       </dl>

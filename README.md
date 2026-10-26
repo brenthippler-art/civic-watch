@@ -40,6 +40,18 @@ I designed and built the whole project: the data pipeline, the parsing logic, th
 | Hosting | Vercel (static), GitHub |
 | Scheduling | Windows Task Scheduler |
 
+## Screenshots
+
+<!-- Replace these with real screenshots. Suggested size: ~1400px wide. -->
+
+| Agendas | Voting record |
+| --- | --- |
+| ![Agendas page with sidebar filters and meeting cards](docs/screenshots/agendas.png) | ![Voting record page with split votes and member cards](docs/screenshots/record.png) |
+
+| Mobile | Dark mode |
+| --- | --- |
+| ![Agendas page on a phone, with filters above the meetings](docs/screenshots/mobile.png) | ![Agendas page in dark mode](docs/screenshots/dark.png) |
+
 ## How it works
 
 ```
