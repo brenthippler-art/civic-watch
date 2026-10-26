@@ -1,0 +1,3 @@
+{
+  "_readme": "Key = body|meeting date|vote ID. Vote IDs are ITEM-N for Fiscal Court (N = agenda item number) and MO-YYYY-N or ORD-YYYY-N for City Commission. Names must match the minutes' spelling (last names). Every entry needs a source. Only add names you have confirmed."
+}

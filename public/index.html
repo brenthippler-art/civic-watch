@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Civic Watch | Bowling Green & Warren County</title>
+    <meta
+      name="description"
+      content="Upcoming Bowling Green City Commission and Warren County Fiscal Court agenda items, in one place."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to meetings</a>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <div class="masthead-text">
+          <p class="eyebrow">Bowling Green · Warren County, KY</p>
+          <h1>Civic Watch</h1>
+          <p class="tagline">
+            What your City Commission and Fiscal Court are voting on, pulled
+            straight from the official agendas.
+          </p>
+          <ul class="legend" aria-label="Color key">
+            <li><span class="dot city"></span>City Commission</li>
+            <li><span class="dot county"></span>Fiscal Court</li>
+          </ul>
+          <nav class="site-nav" aria-label="Site">
+            <a href="./" aria-current="page">Agendas</a>
+            <a href="record.html">Voting record</a>
+          </nav>
+        </div>
+
+        <svg
+          class="county-map"
+          viewBox="0 0 200 200"
+          role="img"
+          aria-labelledby="map-title"
+        >
+          <title id="map-title">
+            Outline of Warren County, Kentucky, with Bowling Green marked
+          </title>
+          <path
+            d="M97.6,23.3L136.6,60.2L157.8,50.2L166.1,61.6L192,67.9L174.3,120.3L161.3,131.2L141.3,137.6L142.5,145.3L95.3,185.2L97.6,172.5L37.5,163L28.1,141.4L8,93.4L26.9,32.9L24.5,18.7L65.8,14.8L75.2,30.4Z"
+            fill="#4f9a73"
+            stroke="#f6f3ec"
+            stroke-width="5"
+            stroke-linejoin="round"
+          />
+          <circle
+            class="city-pulse"
+            cx="71.1"
+            cy="106.2"
+            r="14"
+            fill="none"
+            stroke="#f08a80"
+            stroke-width="5"
+          />
+          <circle
+            cx="71.1"
+            cy="106.2"
+            r="14"
+            fill="#4f7cb8"
+            stroke="#f6f3ec"
+            stroke-width="5"
+          />
+        </svg>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar" aria-labelledby="filters-heading">
+        <h2 id="filters-heading">Filters</h2>
+        <form id="filters">
+          <fieldset>
+            <legend>Government</legend>
+            <div class="options">
+              <div class="option">
+                <input
+                  type="radio"
+                  id="body-all"
+                  name="body"
+                  value="all"
+                  checked
+                />
+                <label for="body-all">Both</label>
+              </div>
+              <div class="option">
+                <input type="radio" id="body-city" name="body" value="city" />
+                <label for="body-city">City Commission</label>
+              </div>
+              <div class="option">
+                <input
+                  type="radio"
+                  id="body-county"
+                  name="body"
+                  value="county"
+                />
+                <label for="body-county">Fiscal Court</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Reading</legend>
+            <div class="options">
+              <div class="option">
+                <input
+                  type="radio"
+                  id="reading-any"
+                  name="reading"
+                  value="any"
+                  checked
+                />
+                <label for="reading-any">Any</label>
+              </div>
+              <div class="option">
+                <input
+                  type="radio"
+                  id="reading-first"
+                  name="reading"
+                  value="first"
+                />
+                <label for="reading-first">First reading</label>
+              </div>
+              <div class="option">
+                <input
+                  type="radio"
+                  id="reading-second"
+                  name="reading"
+                  value="second"
+                />
+                <label for="reading-second">Second reading</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Topic</legend>
+            <div class="options" id="topic-options"></div>
+          </fieldset>
+
+          <button type="reset" class="reset">Clear filters</button>
+        </form>
+      </aside>
+
+      <main id="main">
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+
+        <section aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading">Upcoming meetings</h2>
+          <div id="upcoming"></div>
+        </section>
+
+        <section aria-labelledby="past-heading">
+          <h2 id="past-heading">Past meetings</h2>
+          <div id="past"></div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p>
+        Automatically generated from public agendas. Always check the original
+        document. Item flags are keyword matches, not analysis.
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
