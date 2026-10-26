@@ -43,7 +43,10 @@ const PARTICIPATE = {
       "https://www.google.com/maps/search/?api=1&query=429+East+10th+Avenue+Bowling+Green+KY",
     speak:
       "To ask about speaking at a meeting, call the Fiscal Court office at 270-843-4146.",
-    watch: null, // add { label, url } once the county video link is confirmed
+    watch: {
+      label: "Warren County on YouTube",
+      url: "https://www.youtube.com/@warrencountykygov",
+    },
     phone: { label: "270-843-4146", href: "tel:+12708434146" },
     findMagistrate:
       "https://bgky.maps.arcgis.com/apps/instant/sidebar/index.html?appid=1fba8d21efff42efb36b4fff8f7dbc8d",
@@ -135,6 +138,11 @@ function itemHtml(item, vote) {
 
 const NEW_TAB = `<span class="visually-hidden"> (opens in new tab)</span>`;
 
+// Matches the links used in the RSS feeds and alert emails: "meeting-2026-10-29-county"
+function anchorFor(meeting) {
+  return `meeting-${meeting.date}-${bodyKey(meeting)}`;
+}
+
 function participateHtml(meeting) {
   const info = PARTICIPATE[bodyKey(meeting)];
   const time = meeting.time ?? info.usualTime;
@@ -195,7 +203,7 @@ function meetingHtml(meeting) {
     itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`]);
 
   return `
-    <article class="meeting ${bodyKey(meeting)}">
+    <article class="meeting ${bodyKey(meeting)}" id="${anchorFor(meeting)}" tabindex="-1">
       <div class="date-tile" aria-hidden="true">
         <span class="month">${month}</span>
         <span class="day">${day}</span>
@@ -226,6 +234,7 @@ function meetingHtml(meeting) {
                </a>`
               : ""
           }
+                    <button type="button" class="copy-link" data-anchor="${anchorFor(meeting)}">Copy link</button>
         </p>
       </div>
     </article>`;
@@ -288,10 +297,10 @@ function render() {
     toggle;
 
   const count = upcomingCards.length + pastCards.length;
-  document.querySelector("#result-count").textContent =
-    `Showing ${count} meeting${count === 1 ? "" : "s"} in the last sixty days. Older meetings available at the bottom of the page.`;
+  document.querySelector("#result-count").textContent = showOlder
+    ? `Showing ${count} meeting${count === 1 ? "" : "s"}, including older meetings.`
+    : `Showing ${count} meeting${count === 1 ? "" : "s"} from the last 60 days. Older meetings are at the bottom of the page.`;
 }
-
 // ---------- Events ----------
 
 const form = document.querySelector("#filters");
@@ -306,13 +315,17 @@ form.addEventListener("change", () => {
   render();
 });
 
-form.addEventListener("reset", (event) => {
-  event.preventDefault();
+function resetFilters() {
   filters = { ...DEFAULT_FILTERS };
-  showOlder = false;
   form.elements.body.value = "all";
   form.elements.reading.value = "any";
   form.querySelector('input[name="topic"][value=""]').checked = true;
+}
+
+form.addEventListener("reset", (event) => {
+  event.preventDefault();
+  resetFilters();
+  showOlder = false;
   render();
 });
 
@@ -323,14 +336,89 @@ document.querySelector("#past").addEventListener("click", (event) => {
   document.querySelector("#toggle-older")?.focus();
 });
 
+// ---------- Shareable links ----------
+
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
+function announce(message) {
+  const announcer = document.querySelector("#announcer");
+  announcer.textContent = "";
+  // A tiny delay makes screen readers announce the same message twice in a row.
+  setTimeout(() => (announcer.textContent = message), 50);
+}
+
+// Scroll to the meeting named in the URL (#meeting-2026-10-29-county), if any.
+// smooth: true only for in-page clicks. On page load, an instant jump is more reliable.
+function goToLinkedMeeting({ smooth = false } = {}) {
+  const id = decodeURIComponent(location.hash.slice(1));
+  if (!id.startsWith("meeting-")) return;
+
+  const target = meetings.find((m) => anchorFor(m) === id);
+  if (!target) {
+    console.warn(`No meeting matches the link #${id}`);
+    return;
+  }
+
+  // The meeting may be hidden by a filter or behind "Show older meetings."
+  if (!document.getElementById(id)) {
+    resetFilters();
+    if (target.date < PAST_CUTOFF) showOlder = true;
+    render();
+  }
+
+  const card = document.getElementById(id);
+  if (!card) return;
+
+  const scrollToCard = (behavior) => card.scrollIntoView({ behavior, block: "start" });
+
+  scrollToCard(smooth && !prefersReducedMotion ? "smooth" : "auto");
+
+  // Web fonts can finish loading after this and shift the page. Re-align once they're ready.
+  if (!smooth) document.fonts?.ready.then(() => scrollToCard("auto"));
+
+  card.focus({ preventScroll: true });
+  card.classList.add("highlight");
+  setTimeout(() => card.classList.remove("highlight"), 2500);
+}
+
+window.addEventListener("hashchange", () => goToLinkedMeeting({ smooth: true }));
+
+document.addEventListener("click", async (event) => {
+  const button = event.target.closest(".copy-link");
+  if (!button) return;
+
+  const url = `${location.origin}${location.pathname}#${button.dataset.anchor}`;
+  try {
+    await navigator.clipboard.writeText(url);
+    button.textContent = "Link copied";
+    announce("Link copied.");
+    setTimeout(() => (button.textContent = "Copy link"), 2000);
+  } catch {
+    // Clipboard blocked (some browsers, or no HTTPS). Put the link in the address bar instead.
+    history.replaceState(null, "", `#${button.dataset.anchor}`);
+    announce("Couldn't copy automatically. The link is now in your address bar.");
+  }
+});
+
 // ---------- Start ----------
 
-const [meetingsResponse, votesResponse] = await Promise.all([
-  fetch("data/meetings.json"),
-  fetch("data/votes.json"),
-]);
-({ meetings } = await meetingsResponse.json());
-votes = votesResponse.ok ? await votesResponse.json() : {};
+try {
+  const [meetingsResponse, votesResponse] = await Promise.all([
+    fetch("data/meetings.json"),
+    fetch("data/votes.json"),
+  ]);
+  if (!meetingsResponse.ok) throw new Error(`meetings.json returned ${meetingsResponse.status}`);
 
-renderTopicOptions();
-render();
+  ({ meetings } = await meetingsResponse.json());
+  votes = votesResponse.ok ? await votesResponse.json() : {};
+
+  renderTopicOptions();
+  render();
+  goToLinkedMeeting(); // jump to #meeting-… if the URL has one
+} catch (err) {
+  console.error("Couldn't load site data:", err);
+  document.querySelector("#upcoming").innerHTML =
+    `<p class="quiet">Meeting data couldn't be loaded right now. Please try again later.</p>`;
+}

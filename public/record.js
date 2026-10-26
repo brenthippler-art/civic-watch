@@ -134,8 +134,12 @@ function buildRecords(body, meetings, votes) {
 }
 
 function sourceLinks(meeting, minutesUrl) {
+  const bodyKey = meeting.body.includes("County") ? "county" : "city";
+  const anchor = `meeting-${meeting.date}-${bodyKey}`;
+
   return `
     <p class="source-links">
+      <a class="source-link" href="./#${anchor}">Meeting on Civic Watch</a>
       <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">
         Agenda <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
       </a>
