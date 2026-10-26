@@ -12,6 +12,7 @@ export async function loadCorrections() {
 }
 
 // Key format: "county|2026-07-09|ITEM-30" or "city|2026-06-16|MO-2026-158"
+// Each entry can have "nays" (names), a "note", or both. "source" is always required.
 export function applyCorrections(votesArchive, meetings, corrections) {
   const problems = [];
 
@@ -29,14 +30,26 @@ export function applyCorrections(votesArchive, meetings, corrections) {
       continue;
     }
 
-    const nayCount = vote.nayCount ?? vote.nays.length;
-    if (!Array.isArray(fix.nays) || fix.nays.length !== nayCount) {
-      problems.push(`${key}: the minutes record ${nayCount} "no" vote(s), but the correction lists ${fix.nays?.length ?? 0}`);
+    if (!fix.source) {
+      problems.push(`${key}: every correction needs a "source" (for example, "Meeting video at 1:42:10")`);
       continue;
     }
 
-    if (!fix.source) {
-      problems.push(`${key}: every correction needs a "source" (for example, "Meeting video at 1:42:10")`);
+    if (fix.nays === undefined && !fix.note) {
+      problems.push(`${key}: add "nays", a "note", or both`);
+      continue;
+    }
+
+    // A note can stand alone: it's shown with the vote and changes no counts.
+    if (fix.note) {
+      vote.note = { text: fix.note, source: fix.source };
+    }
+
+    if (fix.nays === undefined) continue; // note-only entry: done
+
+    const nayCount = vote.nayCount ?? vote.nays.length;
+    if (!Array.isArray(fix.nays) || fix.nays.length !== nayCount) {
+      problems.push(`${key}: the minutes record ${nayCount} "no" vote(s), but the correction lists ${fix.nays?.length ?? 0}`);
       continue;
     }
 
@@ -48,7 +61,7 @@ export function applyCorrections(votesArchive, meetings, corrections) {
     }
 
     vote.nays = fix.nays;
-    vote.correction = { source: fix.source, note: fix.note ?? null };
+    vote.correction = { source: fix.source };
 
     // With the "no" voters known, work out the yes voters if the counts line up.
     const accounted = (vote.yeaCount ?? 0) + nayCount + (vote.abstainCount ?? 0);

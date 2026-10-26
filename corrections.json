@@ -1,3 +1,16 @@
 {
-  "_readme": "Key = body|meeting date|vote ID. Vote IDs are ITEM-N for Fiscal Court (N = agenda item number) and MO-YYYY-N or ORD-YYYY-N for City Commission. Names must match the minutes' spelling (last names). Every entry needs a source. Only add names you have confirmed."
+  "_readme": "Key = body|meeting date|vote ID. Vote IDs are ITEM-N for Fiscal Court (N = agenda item number) and MO-YYYY-N or ORD-YYYY-N for City Commission. Each entry needs a \"source\", plus \"nays\" (last names, spelled as in the minutes), a \"note\", or both. Only add names you have confirmed.",
+
+  "county|2026-07-09|ITEM-30": { "nays": ["Cummings"], "source": "Meeting video, July 9, 2026" },
+  "county|2026-07-09|ITEM-31": { "nays": ["Cummings"], "source": "Meeting video, July 9, 2026" },
+  "county|2026-08-13|ITEM-7": { "nays": ["Cummings"], "source": "Meeting video, August 13, 2026" },
+
+  "county|2026-07-30|ITEM-30": {
+    "note": "The minutes record six yeas and one nay, but no \"no\" vote is made in the meeting video.",
+    "source": "Meeting video, July 30, 2026"
+  },
+  "county|2026-07-30|ITEM-31": {
+    "note": "The minutes record six yeas and one nay, but no \"no\" vote is made in the meeting video.",
+    "source": "Meeting video, July 30, 2026"
+  }
 }

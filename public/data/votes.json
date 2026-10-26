@@ -12973,11 +12973,23 @@
         "yeaCount": 6,
         "nayCount": 1,
         "abstainCount": 0,
-        "yeas": null,
-        "nays": [],
+        "yeas": [
+          "Aldridge",
+          "Lasley",
+          "Lawrence",
+          "McWhorter",
+          "Williams",
+          "Gorman"
+        ],
+        "nays": [
+          "Cummings"
+        ],
         "abstain": [],
-        "inferred": false,
-        "outcome": "approved"
+        "inferred": true,
+        "outcome": "approved",
+        "correction": {
+          "source": "Meeting video, July 9, 2026"
+        }
       },
       "ITEM-31": {
         "id": "ITEM-31",
@@ -12988,11 +13000,23 @@
         "yeaCount": 6,
         "nayCount": 1,
         "abstainCount": 0,
-        "yeas": null,
-        "nays": [],
+        "yeas": [
+          "Aldridge",
+          "Lasley",
+          "Lawrence",
+          "McWhorter",
+          "Williams",
+          "Gorman"
+        ],
+        "nays": [
+          "Cummings"
+        ],
         "abstain": [],
-        "inferred": false,
-        "outcome": "approved"
+        "inferred": true,
+        "outcome": "approved",
+        "correction": {
+          "source": "Meeting video, July 9, 2026"
+        }
       },
       "ITEM-32": {
         "id": "ITEM-32",
@@ -13804,7 +13828,11 @@
         "nays": [],
         "abstain": [],
         "inferred": false,
-        "outcome": "approved"
+        "outcome": "approved",
+        "note": {
+          "text": "The minutes record six yeas and one nay, but no \"no\" vote is made in the meeting video.",
+          "source": "Meeting video, July 30, 2026"
+        }
       },
       "ITEM-31": {
         "id": "ITEM-31",
@@ -13819,7 +13847,11 @@
         "nays": [],
         "abstain": [],
         "inferred": false,
-        "outcome": "approved"
+        "outcome": "approved",
+        "note": {
+          "text": "The minutes record six yeas and one nay, but no \"no\" vote is made in the meeting video.",
+          "source": "Meeting video, July 30, 2026"
+        }
       },
       "ITEM-32": {
         "id": "ITEM-32",
@@ -14140,11 +14172,22 @@
         "yeaCount": 5,
         "nayCount": 1,
         "abstainCount": 0,
-        "yeas": null,
-        "nays": [],
+        "yeas": [
+          "Aldridge",
+          "Lasley",
+          "Lawrence",
+          "Williams",
+          "Gorman"
+        ],
+        "nays": [
+          "Cummings"
+        ],
         "abstain": [],
-        "inferred": false,
-        "outcome": "approved"
+        "inferred": true,
+        "outcome": "approved",
+        "correction": {
+          "source": "Meeting video, August 13, 2026"
+        }
       },
       "ITEM-9": {
         "id": "ITEM-9",

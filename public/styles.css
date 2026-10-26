@@ -474,6 +474,13 @@ details li { margin: 0.5rem 0; }
 .split-meta .vote { margin-right: 0.5rem; }
 .split-text { margin: 0.4rem 0; }
 .split-who { margin: 0; }
+.split-note {
+  margin: 0.5rem 0 0;
+  padding: 0.5rem 0.75rem;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-soft);
+  border-radius: 0 6px 6px 0;
+}
 
 .officials {
   display: grid;

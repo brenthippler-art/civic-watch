@@ -163,6 +163,10 @@ function splitHtml({ meeting, minutesUrl, vote, text, procedural }) {
     ? `<p class="split-who"><strong>Voted yes:</strong> ${vote.yeas.map(escapeHtml).join(", ")}${vote.inferred ? ` <span class="quiet">(from attendance)</span>` : ""}</p>`
     : "";
 
+  const noteLine = vote.note
+    ? `<p class="split-note"><strong>Note:</strong> ${escapeHtml(vote.note.text)} <span class="quiet">(source: ${escapeHtml(vote.note.source)})</span></p>`
+    : "";
+
   return `
     <article class="split-vote">
       <p class="split-meta">
@@ -170,11 +174,13 @@ function splitHtml({ meeting, minutesUrl, vote, text, procedural }) {
         ${formatDate(meeting.date)}
         ${procedural ? `<span class="tag reading">Procedural motion</span>` : ""}
         ${failed ? `<span class="vote failed">Failed</span>` : ""}
+        ${vote.note ? `<span class="tag reading">See note</span>` : ""}
       </p>
       <p class="split-text">${escapeHtml(text)}</p>
       <p class="split-who"><strong>Voted no:</strong> ${noLine}</p>
       ${yesLine}
       ${vote.tally ? `<p class="split-who quiet">Recorded in the minutes as: “${escapeHtml(vote.tally)}”</p>` : ""}
+      ${noteLine}
       ${sourceLinks(meeting, minutesUrl)}
     </article>`;
 }
