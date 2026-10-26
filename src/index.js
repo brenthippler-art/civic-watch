@@ -1,27 +1,37 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { publish } from "./publish.js";
 import { getBgCityDocuments } from "./sources/bgCity.js";
 import { getWarrenCountyDocuments } from "./sources/warrenCounty.js";
+import { getCountyVideos } from "./sources/countyVideos.js";
 import { getDocumentText } from "./pdfText.js";
 import { splitAgendaItems } from "./splitItems.js";
 import { matchTopics } from "./watchlist.js";
+import { extractMeetingTime } from "./meetingTime.js";
 import { loadSeen, saveSeen } from "./seen.js";
 import { buildDigest } from "./digest.js";
-import { loadArchive, mergeEntries, saveArchive } from "./archive.js";
+import { loadArchive, mergeEntries, saveArchive, attachVideos } from "./archive.js";
+import { writeFeeds } from "./feed.js";
 import { loadVotes, saveVotes } from "./votes.js";
 import { parseCityMinutes } from "./minutes/cityMinutes.js";
 import { parseCountyMinutes } from "./minutes/countyMinutes.js";
-import { localDateString, daysBetween } from "./dates.js";
 import { loadCorrections, applyCorrections } from "./corrections.js";
-import { writeFeeds } from "./feed.js";
-import { sendAgendaAlerts } from "./alerts.js";
-import { extractMeetingTime } from "./meetingTime.js";
 import { writeStatus } from "./status.js";
+import { publish } from "./publish.js";
+import { sendAgendaAlerts } from "./alerts.js";
+import { localDateString, daysBetween } from "./dates.js";
+
+// Load KIT_API_KEY and KIT_ALERT_MODE from .env, so every run has them,
+// with or without --env-file. If there's no .env file, carry on without it.
+try {
+  process.loadEnvFile(".env");
+} catch {
+  // No .env file: alerts stay off.
+}
 
 // ---- Options ----
 // Normal daily run:  node src/index.js
 // One-time backfill: node src/index.js --since 2026-01-01
+// Skip publishing:   --no-publish     Skip email alerts: --no-email
 const sinceIndex = process.argv.indexOf("--since");
 const since = sinceIndex !== -1 ? process.argv[sinceIndex + 1] : null;
 
@@ -57,8 +67,7 @@ const agendas = docs
   .filter((d) => d.type === "agenda" && d.date >= cutoff)
   .sort((a, b) => a.date - b.date);
 
-if (isBackfill)
-  console.log(`Backfilling ${agendas.length} agendas since ${since}…`);
+if (isBackfill) console.log(`Backfilling ${agendas.length} agendas since ${since}…`);
 
 // ---- Process each agenda ----
 const seen = await loadSeen();
@@ -74,9 +83,7 @@ for (const [index, doc] of agendas.entries()) {
     entries.push({ doc, items, isNew: !seen.has(doc.url), time: extractMeetingTime(text) });
 
     if (isBackfill) {
-      console.log(
-        `  [${index + 1}/${agendas.length}] ${localDateString(doc.date)} ${doc.body}: ${items.length} items`,
-      );
+      console.log(`  [${index + 1}/${agendas.length}] ${localDateString(doc.date)} ${doc.body}: ${items.length} items`);
       await pause();
     }
   } catch (err) {
@@ -90,11 +97,7 @@ if (!isBackfill) {
   if (digest) {
     console.log(digest);
     await mkdir(path.join("data", "digests"), { recursive: true });
-    await writeFile(
-      path.join("data", "digests", `${localDateString()}.txt`),
-      digest,
-      "utf8",
-    );
+    await writeFile(path.join("data", "digests", `${localDateString()}.txt`), digest, "utf8");
   } else {
     console.log("Nothing new today.");
   }
@@ -102,12 +105,24 @@ if (!isBackfill) {
 
 // ---- Website data: meetings ----
 const archive = mergeEntries(await loadArchive(), entries);
+
+// Meeting video links: city from its website, county from its YouTube feed.
+const videos = docs
+  .filter((d) => d.type === "video")
+  .map((d) => ({ body: d.body, date: localDateString(d.date), url: d.url }));
+
+try {
+  videos.push(...(await getCountyVideos()));
+} catch (err) {
+  console.warn("County videos skipped:", err.message);
+}
+
+const videosAttached = attachVideos(archive, videos);
+if (videosAttached) console.log(`Video links added: ${videosAttached}`);
+
 const archiveChanged = await saveArchive(archive);
-console.log(
-  archiveChanged
-    ? `Site data updated (${archive.meetings.length} meetings total).`
-    : "Site data unchanged.",
-);
+console.log(archiveChanged ? `Site data updated (${archive.meetings.length} meetings total).` : "Site data unchanged.");
+
 const feedsChanged = await writeFeeds(archive.meetings);
 console.log(feedsChanged ? "Feeds updated." : "Feeds unchanged.");
 

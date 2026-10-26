@@ -133,21 +133,24 @@ function buildRecords(body, meetings, votes) {
   return { records: [...records.values()], splits, rollCalls, meetingCount, unattributed };
 }
 
+const VIDEO_PAGES = {
+  city: "https://www.bgky.org/videos",
+  county: "https://www.youtube.com/@warrencountykygov",
+};
+
 function sourceLinks(meeting, minutesUrl) {
   const bodyKey = meeting.body.includes("County") ? "county" : "city";
   const anchor = `meeting-${meeting.date}-${bodyKey}`;
+  const videoUrl = meeting.videoUrl ?? VIDEO_PAGES[bodyKey];
+  const videoLabel = meeting.videoUrl ? "Video" : "Meeting videos";
+  const newTab = `<span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>`;
 
   return `
     <p class="source-links">
       <a class="source-link" href="./#${anchor}">Meeting on Civic Watch</a>
-      <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">
-        Agenda <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
-      </a>
-      ${minutesUrl
-        ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">
-             Minutes <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
-           </a>`
-        : ""}
+      <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">Agenda ${newTab}</a>
+      ${minutesUrl ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">Minutes ${newTab}</a>` : ""}
+      <a class="source-link" href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener">${videoLabel} ${newTab}</a>
     </p>`;
 }
 

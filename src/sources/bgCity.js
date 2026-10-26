@@ -1,8 +1,9 @@
 import * as cheerio from "cheerio";
 
 const PAGE_URL = "https://www.bgky.org/city-commission";
+const BODY = "Bowling Green City Commission";
 
-// Link labels look like "Agenda 10/20/26". This pulls out the date.
+// Labels look like "Agenda 10/20/26" or "09/15/2026 Board of Commissioners Meeting".
 function parseShortDate(text) {
   const match = text.match(/(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);
   if (!match) return null;
@@ -23,22 +24,27 @@ export async function getBgCityDocuments() {
   $("a").each((_, el) => {
     const label = $(el).text().trim();
     const href = $(el).attr("href");
-    if (!href || !href.toLowerCase().endsWith(".pdf")) return;
-
-    const isAgenda = /agenda/i.test(label);
-    const isMinutes = /minutes/i.test(label);
-    if (!isAgenda && !isMinutes) return;
+    if (!href) return;
 
     const date = parseShortDate(label);
     if (!date) return;
 
-    docs.push({
-      body: "Bowling Green City Commission",
-      type: isAgenda ? "agenda" : "minutes",
-      label,
-      date,
-      url: new URL(href, PAGE_URL).href,
-    });
+    const url = new URL(href, PAGE_URL).href;
+
+    // Agendas and minutes are PDFs.
+    if (href.toLowerCase().endsWith(".pdf")) {
+      const isAgenda = /agenda/i.test(label);
+      const isMinutes = /minutes/i.test(label);
+      if (!isAgenda && !isMinutes) return;
+      docs.push({ body: BODY, type: isAgenda ? "agenda" : "minutes", label, date, url });
+      return;
+    }
+
+    // Meeting videos: "10/20/26 Board of Commissioners Meeting" -> /videos/video/1406
+    // Work sessions are skipped, so a regular meeting's video always wins.
+    if (/\/videos\/video\/\d+/.test(href) && /board of commissioner|\bBOC\b/i.test(label) && !/work session/i.test(label)) {
+      docs.push({ body: BODY, type: "video", label, date, url });
+    }
   });
 
   return docs;

@@ -235,6 +235,17 @@ function meetingHtml(meeting) {
   // Votes for this meeting, keyed by item ref ("MO-2026-215").
   const meetingVotes = votes[meeting.url]?.votes ?? {};
   const minutesUrl = votes[meeting.url]?.minutesUrl;
+
+  // Past meetings: the exact video if we have it, otherwise that body's video page.
+  let videoLink = "";
+  if (meeting.date < TODAY) {
+    const url = meeting.videoUrl ?? PARTICIPATE[bodyKey(meeting)].watch.url;
+    const label = meeting.videoUrl ? "Video" : "Meeting videos";
+    videoLink = `<a class="source-link" href="${escapeHtml(url)}" target="_blank" rel="noopener">
+        ${label} <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
+      </a>`;
+  }
+
   // City items match by ordinance/order number; county items by agenda item number.
     const renderItem = (item) =>
     itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`], meeting);
@@ -271,6 +282,7 @@ function meetingHtml(meeting) {
                </a>`
               : ""
           }
+                    ${videoLink}
                     <button type="button" class="copy-link" data-anchor="${anchorFor(meeting)}">Copy link</button>
         </p>
       </div>

@@ -23,6 +23,7 @@ export function mergeEntries(archive, entries) {
       body: doc.body,
       date: localDateString(doc.date),
       time: time ?? existing?.time ?? null,
+      videoUrl: existing?.videoUrl ?? null,
       special: Boolean(doc.special),
       label: doc.label,
       firstSeen: existing?.firstSeen ?? localDateString(),
@@ -50,4 +51,18 @@ export async function saveArchive(archive) {
   await mkdir(path.dirname(FILE), { recursive: true });
   await writeFile(FILE, json, "utf8");
   return true;
+}
+
+// Attaches each video to the meeting held by the same body on the same date.
+// Returns how many links were added or changed.
+export function attachVideos(archive, videos) {
+  let changed = 0;
+  for (const video of videos) {
+    const meeting = archive.meetings.find((m) => m.body === video.body && m.date === video.date);
+    if (meeting && meeting.videoUrl !== video.url) {
+      meeting.videoUrl = video.url;
+      changed++;
+    }
+  }
+  return changed;
 }

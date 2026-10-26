@@ -5,6 +5,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-10-20",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1406",
       "special": false,
       "label": "Agenda 10/20/26",
       "firstSeen": "2026-10-25",
@@ -260,6 +261,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-10-15",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=I0cI0BWIL1E",
       "special": false,
       "label": "261015 Agenda October 15, 2026",
       "firstSeen": "2026-10-25",
@@ -543,6 +545,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-09-29",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=26xToMtLDTw",
       "special": true,
       "label": "260929 Agenda September 29, 2026 Special Called",
       "firstSeen": "2026-10-25",
@@ -588,6 +591,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-09-24",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=1FnP0NCkWHo",
       "special": false,
       "label": "260924 Agenda September 24, 2026",
       "firstSeen": "2026-10-25",
@@ -843,6 +847,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-09-15",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1397",
       "special": false,
       "label": "Agenda 09/15/26",
       "firstSeen": "2026-10-25",
@@ -1212,7 +1217,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=Lj7OFe5ahvY"
     },
     {
       "url": "https://www.bgky.org/files/Mbj9cNMy.pdf",
@@ -1302,7 +1308,8 @@
           ],
           "ref": "ORD-2026-14"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1395"
     },
     {
       "url": "https://drive.google.com/file/d/16_8ssivtWi8cZt6lcw-qG1mNwszOnTh7/view",
@@ -1581,7 +1588,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=gTGuikl_1Xk"
     },
     {
       "url": "https://www.bgky.org/files/PVyfSN91.pdf",
@@ -1683,7 +1691,8 @@
           ],
           "ref": "ORD-2026-14"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1390"
     },
     {
       "url": "https://drive.google.com/file/d/1dYS0shbe_yldZ1em_jEE6NphAfWR8b2z/view",
@@ -1962,7 +1971,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=0hIHRd0Rh-w"
     },
     {
       "url": "https://www.bgky.org/files/Max9Bb3Q.pdf",
@@ -2056,7 +2066,8 @@
           ],
           "ref": "ORD-2026-13"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1386"
     },
     {
       "url": "https://drive.google.com/file/d/1ec59xj9SoMEtrUcCK0Qv8SNWuZlCfKCD/view",
@@ -2393,7 +2404,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=_S69liqUc9k"
     },
     {
       "url": "https://www.bgky.org/files/kWAlhwsC.pdf",
@@ -2555,7 +2567,8 @@
           ],
           "ref": "ORD-2026-12"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1382"
     },
     {
       "url": "https://drive.google.com/file/d/1s95NjAf9BS8-1gnptlwh1PrnUSL_Fj2-/view",
@@ -2896,7 +2909,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=fKUC-EtHFq0"
     },
     {
       "url": "https://drive.google.com/file/d/1GMckaBa9eBjLRhTndJeRy7lTAygnDtvI/view",
@@ -3167,7 +3181,8 @@
           "topics": [],
           "ref": null
         }
-      ]
+      ],
+      "videoUrl": "https://www.youtube.com/watch?v=1Q67F1oty-I"
     },
     {
       "url": "https://www.bgky.org/files/I2yclFQs.pdf",
@@ -3407,7 +3422,8 @@
           ],
           "ref": "ORD-2026-6"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1374"
     },
     {
       "url": "https://drive.google.com/file/d/1tmI_mSy13PqUhHx2F6pzNHt-xcVQrN-S/view",
@@ -3926,7 +3942,8 @@
           ],
           "ref": "ORD-2026-6"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1371"
     },
     {
       "url": "https://drive.google.com/file/d/1I8J0AYbVfpABgMLrE05E0P5Ag6nD-w1K/view",
@@ -4291,7 +4308,8 @@
           ],
           "ref": "ORD-2026-8"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1362"
     },
     {
       "url": "https://drive.google.com/file/d/1cv0eQwWyZLc4gB9VK41H8Xc3FtFOhLYU/view",
@@ -4747,7 +4765,8 @@
           ],
           "ref": "ORD-2026-7"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1359"
     },
     {
       "url": "https://drive.google.com/file/d/19t_8Xg5lowWTvH6toQeYXs3OvYZDPOpD/view",
@@ -5216,7 +5235,8 @@
           ],
           "ref": "ORD-2026-4"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1355"
     },
     {
       "url": "https://drive.google.com/file/d/1nJ6WoPyIJw4Y5bgxSKFD1PKPQd5sRdcM/view",
@@ -5503,7 +5523,8 @@
           ],
           "ref": "ORD-2026-5"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1350"
     },
     {
       "url": "https://drive.google.com/file/d/11OuE_GW_f41LRjJdDv-lI9ic3swpJiNd/view",
@@ -5993,7 +6014,8 @@
           "topics": [],
           "ref": "MO-2026-72"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1347"
     },
     {
       "url": "https://drive.google.com/file/d/1GUCjZZ8NVZw7SkpnYLH11AAQ_SBuKHIA/view",
@@ -6386,7 +6408,8 @@
           ],
           "ref": "ORD-2026-3"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1341"
     },
     {
       "url": "https://drive.google.com/file/d/1Y-KfgeiCNEukCQgRX3SRDteZPhPEPEzL/view",
@@ -6789,7 +6812,8 @@
           ],
           "ref": "ORD-2026-3"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1335"
     },
     {
       "url": "https://drive.google.com/file/d/1HMm9wCgCcaiM1ih0L0aVdXvsef8-cEOa/view",
@@ -7261,7 +7285,8 @@
           ],
           "ref": "ORD-2026-1"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1330"
     },
     {
       "url": "https://www.bgky.org/files/vgZucKQU.pdf",
@@ -7610,7 +7635,8 @@
           "topics": [],
           "ref": "MO-2026-16"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1327"
     },
     {
       "url": "https://drive.google.com/file/d/1zFPd0sfTcS5cTAvi55qSlG2vQ1_Ak-eA/view",
@@ -7909,7 +7935,8 @@
           ],
           "ref": "ORD-2025-32"
         }
-      ]
+      ],
+      "videoUrl": "https://www.bgky.org/videos/video/1325"
     }
   ]
 }
