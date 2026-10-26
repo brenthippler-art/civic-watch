@@ -1,3 +1,5 @@
+import { escapeHtml, shortDate, bodyKey, meetingAnchor } from "./shared.js";
+
 // Current members. Update after elections.
 // `key` is matched against the first four letters of names in the minutes.
 const BODIES = [
@@ -25,30 +27,43 @@ const BODIES = [
     roster: [
       { key: "gorman", name: "Doug Gorman", title: "Judge-Executive" },
       { key: "lasley", name: "Scott Lasley", title: "Magistrate, District 1" },
-      { key: "lawrence", name: "Tom Lawrence", title: "Magistrate, District 2" },
-      { key: "williams", name: "Rick Williams", title: "Magistrate, District 3" },
-      { key: "mcwhorter", name: "Rex McWhorter", title: "Magistrate, District 4" },
-      { key: "aldridge", name: "Eric Aldridge", title: "Magistrate, District 5" },
-      { key: "cummings", name: "Ron Cummings", title: "Magistrate, District 6" },
+      {
+        key: "lawrence",
+        name: "Tom Lawrence",
+        title: "Magistrate, District 2",
+      },
+      {
+        key: "williams",
+        name: "Rick Williams",
+        title: "Magistrate, District 3",
+      },
+      {
+        key: "mcwhorter",
+        name: "Rex McWhorter",
+        title: "Magistrate, District 4",
+      },
+      {
+        key: "aldridge",
+        name: "Eric Aldridge",
+        title: "Magistrate, District 5",
+      },
+      {
+        key: "cummings",
+        name: "Ron Cummings",
+        title: "Magistrate, District 6",
+      },
     ],
   },
 ];
-
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-}
-
-function formatDate(isoDate) {
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString("en-US", {
-    month: "short", day: "numeric", year: "numeric",
-  });
-}
 
 // "Beasley-Brown", "Esquire Lasley", or an OCR slip -> the roster entry.
 function memberFor(roster, rawName) {
   const clean = rawName
     .toLowerCase()
-    .replace(/^(mayor|commissioner|esquire|magistrate|judge[- ]executive|judge)\s+/, "")
+    .replace(
+      /^(mayor|commissioner|esquire|magistrate|judge[- ]executive|judge)\s+/,
+      "",
+    )
     .replace(/[^a-z]/g, "");
   return roster.find((m) => clean.startsWith(m.key.slice(0, 4))) ?? null;
 }
@@ -60,8 +75,19 @@ function buildRecords(body, meetings, votes) {
   const records = new Map(
     body.roster.map((m) => [
       m.key,
-      { ...m, cast: 0, yea: 0, nay: 0, abstain: 0, absent: 0, meetingsMissed: 0, motions: 0, seconds: 0, dissents: [] },
-    ])
+      {
+        ...m,
+        cast: 0,
+        yea: 0,
+        nay: 0,
+        abstain: 0,
+        absent: 0,
+        meetingsMissed: 0,
+        motions: 0,
+        seconds: 0,
+        dissents: [],
+      },
+    ]),
   );
   const splits = [];
   const unrecognized = new Set();
@@ -74,15 +100,30 @@ function buildRecords(body, meetings, votes) {
     .sort((a, b) => b.date.localeCompare(a.date));
 
   for (const meeting of bodyMeetings) {
-    const { votes: meetingVotes = {}, procedural = [], minutesUrl } = votes[meeting.url];
+    const {
+      votes: meetingVotes = {},
+      procedural = [],
+      minutesUrl,
+    } = votes[meeting.url];
     meetingCount++;
 
     const itemTextFor = (vote) =>
-      meeting.items.find((i) => (i.ref ?? `ITEM-${i.number}`) === vote.id)?.text ?? vote.description ?? vote.id;
+      meeting.items.find((i) => (i.ref ?? `ITEM-${i.number}`) === vote.id)
+        ?.text ??
+      vote.description ??
+      vote.id;
 
     const ballots = [
-      ...Object.values(meetingVotes).map((vote) => ({ vote, procedural: false, text: itemTextFor(vote) })),
-      ...procedural.map((vote) => ({ vote, procedural: true, text: vote.description })),
+      ...Object.values(meetingVotes).map((vote) => ({
+        vote,
+        procedural: false,
+        text: itemTextFor(vote),
+      })),
+      ...procedural.map((vote) => ({
+        vote,
+        procedural: true,
+        text: vote.description,
+      })),
     ];
 
     // For "meetings missed": how many credited votes this meeting had,
@@ -92,7 +133,13 @@ function buildRecords(body, meetings, votes) {
 
     for (const { vote, procedural: isProcedural, text } of ballots) {
       rollCalls++;
-      const context = { meeting, minutesUrl, vote, text, procedural: isProcedural };
+      const context = {
+        meeting,
+        minutesUrl,
+        vote,
+        text,
+        procedural: isProcedural,
+      };
 
       if (nayCountOf(vote) > 0) splits.push(context);
 
@@ -140,16 +187,25 @@ function buildRecords(body, meetings, votes) {
     // Missed every credited vote at this meeting = missed the meeting.
     if (creditedVotesHere > 0) {
       for (const record of records.values()) {
-        if (missedHere.get(record.key) === creditedVotesHere) record.meetingsMissed++;
+        if (missedHere.get(record.key) === creditedVotesHere)
+          record.meetingsMissed++;
       }
     }
   }
 
   if (unrecognized.size) {
-    console.warn(`${body.label}: names that didn't match the roster:`, [...unrecognized]);
+    console.warn(`${body.label}: names that didn't match the roster:`, [
+      ...unrecognized,
+    ]);
   }
 
-  return { records: [...records.values()], splits, rollCalls, meetingCount, unattributed };
+  return {
+    records: [...records.values()],
+    splits,
+    rollCalls,
+    meetingCount,
+    unattributed,
+  };
 }
 
 const VIDEO_PAGES = {
@@ -158,19 +214,17 @@ const VIDEO_PAGES = {
 };
 
 function sourceLinks(meeting, minutesUrl) {
-  const bodyKey = meeting.body.includes("County") ? "county" : "city";
-  const anchor = `meeting-${meeting.date}-${bodyKey}`;
-  const videoUrl = meeting.videoUrl ?? VIDEO_PAGES[bodyKey];
+  const videoUrl = meeting.videoUrl ?? VIDEO_PAGES[bodyKey(meeting)];
   const videoLabel = meeting.videoUrl ? "Video" : "Meeting videos";
   const newTab = `<span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>`;
 
   return `
-    <p class="source-links">
-      <a class="source-link" href="./#${anchor}">Meeting on Civic Watch</a>
-      <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">Agenda ${newTab}</a>
-      ${minutesUrl ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">Minutes ${newTab}</a>` : ""}
-      <a class="source-link" href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener">${videoLabel} ${newTab}</a>
-    </p>`;
+       <p class="source-links">
+         <a class="source-link" href="./#${meetingAnchor(meeting)}">Meeting on Civic Watch</a>
+         <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">Agenda ${newTab}</a>
+         ${minutesUrl ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">Minutes ${newTab}</a>` : ""}
+         <a class="source-link" href="${escapeHtml(videoUrl)}" target="_blank" rel="noopener">${videoLabel} ${newTab}</a>
+       </p>`;
 }
 
 function splitHtml({ meeting, minutesUrl, vote, text, procedural }) {
@@ -197,7 +251,7 @@ function splitHtml({ meeting, minutesUrl, vote, text, procedural }) {
     <article class="split-vote">
       <p class="split-meta">
         <span class="vote split">${yeaCountOf(vote)}–${nayCountOf(vote)}</span>
-        ${formatDate(meeting.date)}
+        ${shortDate(meeting.date)}
         ${procedural ? `<span class="tag reading">Procedural motion</span>` : ""}
         ${failed ? `<span class="vote failed">Failed</span>` : ""}
         ${vote.note ? `<span class="tag reading">See note</span>` : ""}
@@ -223,13 +277,18 @@ function absentStat(record) {
 }
 
 function officialHtml(record, bodyKey) {
-  const yesRate = record.cast ? Math.round((record.yea / record.cast) * 100) : 0;
+  const yesRate = record.cast
+    ? Math.round((record.yea / record.cast) * 100)
+    : 0;
   const dissentList = record.dissents.length
     ? `<details>
          <summary>${record.dissents.length} no vote${record.dissents.length === 1 ? "" : "s"}</summary>
          <ul class="dissent-list">
            ${record.dissents
-             .map((d) => `<li><span class="dissent-date">${formatDate(d.meeting.date)}${d.vote.correction ? " · from video, not minutes" : ""}</span> ${escapeHtml(d.text)}</li>`)
+             .map(
+               (d) =>
+                 `<li><span class="dissent-date">${shortDate(d.meeting.date)}${d.vote.correction ? " · from video, not minutes" : ""}</span> ${escapeHtml(d.text)}</li>`,
+             )
              .join("")}
          </ul>
        </details>`
@@ -251,7 +310,14 @@ function officialHtml(record, bodyKey) {
     </article>`;
 }
 
-function sectionHtml({ body, records, splits, rollCalls, meetingCount, unattributed }) {
+function sectionHtml({
+  body,
+  records,
+  splits,
+  rollCalls,
+  meetingCount,
+  unattributed,
+}) {
   const stats =
     `${rollCalls} roll-call votes from ${meetingCount} meetings · ` +
     `${splits.length} ${splits.length === 1 ? "was" : "were"} not unanimous`;
@@ -280,11 +346,16 @@ const [meetingsResponse, votesResponse] = await Promise.all([
 const { meetings } = await meetingsResponse.json();
 const votes = votesResponse.ok ? await votesResponse.json() : {};
 
-const sections = BODIES.map((body) => ({ body, ...buildRecords(body, meetings, votes) }));
+const sections = BODIES.map((body) => ({
+  body,
+  ...buildRecords(body, meetings, votes),
+}));
 
 const totalVotes = sections.reduce((sum, s) => sum + s.rollCalls, 0);
 const totalSplits = sections.reduce((sum, s) => sum + s.splits.length, 0);
 document.querySelector("#record-summary").textContent =
   `${totalVotes} roll-call votes across both bodies. ${totalSplits} ${totalSplits === 1 ? "was" : "were"} not unanimous.`;
 
-document.querySelector("#bodies").innerHTML = sections.map(sectionHtml).join("");
+document.querySelector("#bodies").innerHTML = sections
+  .map(sectionHtml)
+  .join("");

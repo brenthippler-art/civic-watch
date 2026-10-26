@@ -40,13 +40,20 @@ const ITEM_MOTION = /Motion was made\s*by (.+?) and seconded\s*by (.+?) for /;
 const PROCEDURAL_MOTION = /Motion was made\s*by (.+?) and seconded\s*by (.+?) (to .{3,200}?)\.(?=\s+[A-Z]|\s*$)/g;
 
 // "Parrigin, Bailey, Beasley-Brown, Hill and Alcott" -> ["Parrigin", …]
+// A real name starts with a capital letter and is at most a few words:
+// "Hill", "Beasley-Brown", "Mayor Todd Alcott". Leftover phrases from the
+// minutes ("with none", "a roll call vote was taken") start lowercase.
+function looksLikeName(text) {
+  return /^[A-Z]/.test(text) && text.split(/\s+/).length <= 4;
+}
+
 function splitNames(list) {
   if (!list || /^none/i.test(list.trim())) return [];
   return list
     .replace(/\.$/, "")
     .split(/,|\band\b/)
     .map((name) => name.trim())
-    .filter(Boolean);
+    .filter(looksLikeName);
 }
 
 // "to approve the minutes of June 2" -> "Motion to approve the minutes of June 2"

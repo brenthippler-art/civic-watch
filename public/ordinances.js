@@ -1,23 +1,7 @@
 import { ordinanceInfo } from "./ordinance-key.js";
+import { escapeHtml, todayString, shortDate, bodyKey, meetingAnchor, readingOf } from "./shared.js";
 
-const TODAY = new Date().toLocaleDateString("en-CA");
-
-function escapeHtml(text) {
-  return String(text).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-}
-
-function shortDate(isoDate) {
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-}
-
-const bodyKey = (meeting) => (meeting.body.includes("County") ? "county" : "city");
-const anchorFor = (meeting) => `meeting-${meeting.date}-${bodyKey(meeting)}`;
-
-function readingOf(item) {
-  if (/second (and final )?reading/i.test(item.text)) return "second";
-  if (/first reading/i.test(item.text)) return "first";
-  return null;
-}
+const TODAY = todayString();
 
 // The plain-language part of an item, without the number and reading label.
 function cleanTitle(meeting, item) {
@@ -119,7 +103,7 @@ function stepHtml(step) {
     <li>
       <span class="timeline-date">${shortDate(step.meeting.date)}</span>
       <strong>${readingLabel}</strong> ${result}
-      <a class="timeline-link" href="./#${anchorFor(step.meeting)}">Meeting</a>
+      <a class="timeline-link" href="./#${meetingAnchor(step.meeting)}">Meeting</a>
     </li>`;
 }
 

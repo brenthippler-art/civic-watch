@@ -1,7 +1,8 @@
 import { ordinanceInfo } from "./ordinance-key.js";
 import { PARTICIPATE } from "./participate.js";
+import { escapeHtml, todayString, longDate, bodyKey, meetingAnchor, readingOf } from "./shared.js";
 
-const TODAY = new Date().toLocaleDateString("en-CA"); // "2026-10-25", local time
+const TODAY = todayString()
 const PAST_DAYS = 60;
 const PAST_CUTOFF = (() => {
   const d = new Date();
@@ -14,41 +15,6 @@ let filters = { ...DEFAULT_FILTERS };
 let showOlder = false;
 let meetings = [];
 let votes = {};
-
-function escapeHtml(text) {
-  return text.replace(
-    /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
-  );
-}
-
-function formatDate(isoDate) {
-  // Noon avoids a time-zone shift pushing the date back a day.
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
-// ---------- Filter logic ----------
-
-function bodyKey(meeting) {
-  return meeting.body.includes("County") ? "county" : "city";
-}
-
-// City: "(First Reading – Non-Binding)". County: "second and final reading".
-function readingOf(item) {
-  if (/second (and final )?reading/i.test(item.text)) return "second";
-  if (/first reading/i.test(item.text)) return "first";
-  return null;
-}
-
-// ---------- Search ----------
 
 // "Scottsville  Rezoning" -> ["scottsville", "rezoning"]
 function queryTerms() {
@@ -133,48 +99,6 @@ function itemHtml(item, vote, meeting) {
 const NEW_TAB = `<span class="visually-hidden"> (opens in new tab)</span>`;
 
 // Matches the links used in the RSS feeds and alert emails: "meeting-2026-10-29-county"
-function anchorFor(meeting) {
-  return `meeting-${meeting.date}-${bodyKey(meeting)}`;
-}
-
-function participateHtml(meeting) {
-  const info = PARTICIPATE[bodyKey(meeting)];
-  const time = meeting.time ?? info.usualTime;
-  const timeNote = meeting.time
-    ? ""
-    : ` <span class="quiet">(usual time; check the agenda)</span>`;
-
-  let contact;
-  if (info.contacts) {
-    contact = info.contacts
-      .map(
-        (c) =>
-          `<a href="mailto:${escapeHtml(c.email)}">${escapeHtml(c.name)}</a>`,
-      )
-      .join(", ");
-  } else {
-    contact =
-      `Fiscal Court office: <a href="${info.phone.href}">${info.phone.label}</a>. ` +
-      `<a href="${info.findMagistrate}" target="_blank" rel="noopener">Find your magistrate${NEW_TAB}</a> · ` +
-      `<a href="${info.officialsPage}" target="_blank" rel="noopener">All magistrates${NEW_TAB}</a>`;
-  }
-
-  const watch = info.watch
-    ? `<div><dt>Watch</dt><dd><a href="${info.watch.url}" target="_blank" rel="noopener">${escapeHtml(info.watch.label)}${NEW_TAB}</a></dd></div>`
-    : "";
-
-  return `
-    <div class="participate">
-      <h4>How to take part</h4>
-      <dl>
-        <div><dt>When</dt><dd>${formatDate(meeting.date)}, ${escapeHtml(time)}${timeNote}</dd></div>
-        <div><dt>Where</dt><dd><a href="${info.mapUrl}" target="_blank" rel="noopener">${escapeHtml(info.location)}<span class="visually-hidden"> (map, opens in new tab)</span></a></dd></div>
-        <div><dt>Speak</dt><dd>${escapeHtml(info.speak)}</dd></div>
-        ${watch}
-        <div><dt>Contact</dt><dd>${contact}</dd></div>
-      </dl>
-    </div>`;
-}
 
 function meetingHtml(meeting) {
   if (filters.body !== "all" && bodyKey(meeting) !== filters.body) return "";
@@ -209,7 +133,7 @@ function meetingHtml(meeting) {
     itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`], meeting);
 
   return `
-    <article class="meeting ${bodyKey(meeting)}" id="${anchorFor(meeting)}" tabindex="-1">
+    <article class="meeting ${bodyKey(meeting)}" id="${meetingAnchor(meeting)}" tabindex="-1">
       <div class="date-tile" aria-hidden="true">
         <span class="month">${month}</span>
         <span class="day">${day}</span>
@@ -217,7 +141,7 @@ function meetingHtml(meeting) {
       <div class="meeting-content">
         <h3>${escapeHtml(meeting.body)}</h3>
                 <p class="meta">
-          ${formatDate(meeting.date)}
+          ${longDate(meeting.date)}
           ${meeting.special ? `<span class="badge">Special called</span>` : ""}
         </p>
         ${
@@ -241,7 +165,7 @@ function meetingHtml(meeting) {
               : ""
           }
                     ${videoLink}
-                    <button type="button" class="copy-link" data-anchor="${anchorFor(meeting)}">Copy link</button>
+                    <button type="button" class="copy-link" data-anchor="${meetingAnchor(meeting)}">Copy link</button>
         </p>
       </div>
     </article>`;
@@ -389,7 +313,7 @@ function goToLinkedMeeting({ smooth = false } = {}) {
   const id = decodeURIComponent(location.hash.slice(1));
   if (!id.startsWith("meeting-")) return;
 
-  const target = meetings.find((m) => anchorFor(m) === id);
+  const target = meetings.find((m) => meetingAnchor(m) === id);
   if (!target) {
     console.warn(`No meeting matches the link #${id}`);
     return;

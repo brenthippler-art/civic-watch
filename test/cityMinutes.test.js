@@ -73,3 +73,13 @@ test("A roll call whose result doesn't name an item is procedural, never pinned 
   assert.equal(procedural[0].motion, "Hill");
   assert.equal(procedural[0].second, "Alcott");
 });
+
+test("leftover phrases in a name list aren't counted as names", () => {
+  const text =
+    "Motion was made by Hill and seconded by Bailey to approve the minutes. " +
+    "ROLL CALL: Voting Yea: Alcott, Bailey, Beasley-Brown, Hill and Parrigin, with none " +
+    "Voting Nay: None The motion was approved.";
+  const [vote] = parseCityMinutes(text).procedural;
+  assert.deepEqual(vote.yeas, ["Alcott", "Bailey", "Beasley-Brown", "Hill", "Parrigin"]);
+  assert.deepEqual(vote.nays, []);
+});

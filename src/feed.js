@@ -1,5 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { escapeHtml, longDate, meetingAnchor } from "../public/shared.js";
 
 export const SITE_URL = "https://civic-watch-three.vercel.app";
 const FEED_DIR = path.join("public", "feeds");
@@ -7,32 +8,28 @@ const MAX_ITEMS = 30;
 
 const FEEDS = [
   { file: "all.xml", title: "Civic Watch: all new agendas", match: () => true },
-  { file: "city.xml", title: "Civic Watch: Bowling Green City Commission agendas", match: (m) => m.body.includes("City") },
-  { file: "county.xml", title: "Civic Watch: Warren County Fiscal Court agendas", match: (m) => m.body.includes("County") },
+  {
+    file: "city.xml",
+    title: "Civic Watch: Bowling Green City Commission agendas",
+    match: (m) => m.body.includes("City"),
+  },
+  {
+    file: "county.xml",
+    title: "Civic Watch: Warren County Fiscal Court agendas",
+    match: (m) => m.body.includes("County"),
+  },
 ];
 
-// Escapes text for XML and HTML. Also breaks up "]]>", which would end a CDATA block.
-function escape(text) {
-  return String(text)
-    .replace(/[<>&'"]/g, (c) => ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&#39;", '"': "&quot;" })[c])
-    .replace(/]]>/g, "]]&gt;");
-}
-
-export function meetingAnchor(meeting) {
-  return `meeting-${meeting.date}-${meeting.body.includes("County") ? "county" : "city"}`;
-}
-
-function longDate(isoDate) {
-  return new Date(`${isoDate}T12:00:00`).toLocaleDateString("en-US", {
-    weekday: "long", month: "long", day: "numeric", year: "numeric",
-  });
-}
+// HTML escaping, plus breaking up "]]>", which would end a CDATA block.
+const escape = (text) => escapeHtml(text).replace(/]]>/g, "]]&gt;");
 
 function itemXml(meeting) {
   const nonRoutine = meeting.items.filter((i) => !i.routine);
   const flagged = nonRoutine.filter((i) => i.topics.length);
   const listed = flagged.length ? flagged : nonRoutine.slice(0, 5);
-  const listLabel = flagged.length ? "Flagged items" : "First items on the agenda";
+  const listLabel = flagged.length
+    ? "Flagged items"
+    : "First items on the agenda";
 
   const html =
     `<p>${meeting.special ? "<strong>Special called meeting.</strong> " : ""}` +
@@ -57,7 +54,10 @@ function itemXml(meeting) {
 function feedXml(feed, meetings) {
   const items = meetings
     .filter(feed.match)
-    .sort((a, b) => b.firstSeen.localeCompare(a.firstSeen) || b.date.localeCompare(a.date))
+    .sort(
+      (a, b) =>
+        b.firstSeen.localeCompare(a.firstSeen) || b.date.localeCompare(a.date),
+    )
     .slice(0, MAX_ITEMS);
 
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -87,8 +87,13 @@ export async function writeFeeds(meetings) {
   await mkdir(FEED_DIR, { recursive: true });
   let changed = false;
   for (const feed of FEEDS) {
-    const wrote = await writeIfChanged(path.join(FEED_DIR, feed.file), feedXml(feed, meetings));
+    const wrote = await writeIfChanged(
+      path.join(FEED_DIR, feed.file),
+      feedXml(feed, meetings),
+    );
     changed = changed || wrote;
   }
   return changed;
 }
+
+export { meetingAnchor };

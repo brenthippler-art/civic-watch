@@ -14,7 +14,7 @@
           "number": 1,
           "section": "ITEMS FOR CONSIDERATION",
           "text": "Municipal Order No. 2026 – 215 Municipal Order approving the promotion Kenny Woods to the position of Construction Coordinator I in the Public Works Department",
-          "routine": false,
+          "routine": true,
           "topics": [],
           "ref": "MO-2026-215"
         },
@@ -991,6 +991,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-09-10",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=Lj7OFe5ahvY",
       "special": false,
       "label": "260910 Agenda September 10, 2026",
       "firstSeen": "2026-10-25",
@@ -1217,14 +1218,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=Lj7OFe5ahvY"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/Mbj9cNMy.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-09-01",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1395",
       "special": false,
       "label": "Agenda 09/01/26",
       "firstSeen": "2026-10-25",
@@ -1308,14 +1309,14 @@
           ],
           "ref": "ORD-2026-14"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1395"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/16_8ssivtWi8cZt6lcw-qG1mNwszOnTh7/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-08-27",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=gTGuikl_1Xk",
       "special": false,
       "label": "260827 Agenda August 27, 2026",
       "firstSeen": "2026-10-25",
@@ -1588,14 +1589,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=gTGuikl_1Xk"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/PVyfSN91.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-08-18",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1390",
       "special": false,
       "label": "Agenda 08/18/26",
       "firstSeen": "2026-10-25",
@@ -1691,14 +1692,14 @@
           ],
           "ref": "ORD-2026-14"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1390"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1dYS0shbe_yldZ1em_jEE6NphAfWR8b2z/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-08-13",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=0hIHRd0Rh-w",
       "special": false,
       "label": "260813 Agenda August 13, 2026",
       "firstSeen": "2026-10-25",
@@ -1971,14 +1972,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=0hIHRd0Rh-w"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/Max9Bb3Q.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-08-04",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1386",
       "special": false,
       "label": "Agenda 08/04/26",
       "firstSeen": "2026-10-25",
@@ -2066,14 +2067,14 @@
           ],
           "ref": "ORD-2026-13"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1386"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1ec59xj9SoMEtrUcCK0Qv8SNWuZlCfKCD/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-07-30",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=_S69liqUc9k",
       "special": false,
       "label": "260730 Agenda July 30, 2026",
       "firstSeen": "2026-10-25",
@@ -2404,14 +2405,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=_S69liqUc9k"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/kWAlhwsC.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-07-21",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1382",
       "special": false,
       "label": "Agenda 07/21/26",
       "firstSeen": "2026-10-25",
@@ -2567,14 +2568,14 @@
           ],
           "ref": "ORD-2026-12"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1382"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1s95NjAf9BS8-1gnptlwh1PrnUSL_Fj2-/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-07-09",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=fKUC-EtHFq0",
       "special": false,
       "label": "260709 Agenda July 9, 2026",
       "firstSeen": "2026-10-25",
@@ -2909,14 +2910,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=fKUC-EtHFq0"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1GMckaBa9eBjLRhTndJeRy7lTAygnDtvI/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-06-25",
       "time": "9:00 AM",
+      "videoUrl": "https://www.youtube.com/watch?v=1Q67F1oty-I",
       "special": false,
       "label": "260625 Agenda June 25, 2026",
       "firstSeen": "2026-10-25",
@@ -3181,14 +3182,14 @@
           "topics": [],
           "ref": null
         }
-      ],
-      "videoUrl": "https://www.youtube.com/watch?v=1Q67F1oty-I"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/I2yclFQs.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-06-16",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1374",
       "special": false,
       "label": "Agenda 06/16/26",
       "firstSeen": "2026-10-25",
@@ -3422,14 +3423,14 @@
           ],
           "ref": "ORD-2026-6"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1374"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1tmI_mSy13PqUhHx2F6pzNHt-xcVQrN-S/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-06-11",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260611 Agenda June 11, 2026",
       "firstSeen": "2026-10-25",
@@ -3772,6 +3773,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-06-02",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1371",
       "special": false,
       "label": "Agenda 06/02/26",
       "firstSeen": "2026-10-25",
@@ -3942,14 +3944,14 @@
           ],
           "ref": "ORD-2026-6"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1371"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1I8J0AYbVfpABgMLrE05E0P5Ag6nD-w1K/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-05-28",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260528 Agenda May 28, 2026",
       "firstSeen": "2026-10-25",
@@ -4203,6 +4205,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-05-19",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1362",
       "special": false,
       "label": "Agenda 05/19/26",
       "firstSeen": "2026-10-25",
@@ -4308,14 +4311,14 @@
           ],
           "ref": "ORD-2026-8"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1362"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1cv0eQwWyZLc4gB9VK41H8Xc3FtFOhLYU/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-05-14",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260514 Agenda May 14, 2026",
       "firstSeen": "2026-10-25",
@@ -4652,6 +4655,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-05-05",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1359",
       "special": false,
       "label": "Agenda 05/05/26",
       "firstSeen": "2026-10-25",
@@ -4765,14 +4769,14 @@
           ],
           "ref": "ORD-2026-7"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1359"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/19t_8Xg5lowWTvH6toQeYXs3OvYZDPOpD/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-04-30",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260430 Agenda April 30, 2026",
       "firstSeen": "2026-10-25",
@@ -5115,6 +5119,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-04-21",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1355",
       "special": false,
       "label": "Agenda 04/21/26",
       "firstSeen": "2026-10-25",
@@ -5235,14 +5240,14 @@
           ],
           "ref": "ORD-2026-4"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1355"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1nJ6WoPyIJw4Y5bgxSKFD1PKPQd5sRdcM/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-04-16",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260416 Agenda April 16, 2026",
       "firstSeen": "2026-10-25",
@@ -5492,6 +5497,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-04-02",
       "time": null,
+      "videoUrl": "https://www.bgky.org/videos/video/1350",
       "special": false,
       "label": "Special Agenda 04/02/26",
       "firstSeen": "2026-10-25",
@@ -5523,14 +5529,14 @@
           ],
           "ref": "ORD-2026-5"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1350"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/11OuE_GW_f41LRjJdDv-lI9ic3swpJiNd/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-03-26",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260326 Agenda March 26, 2026",
       "firstSeen": "2026-10-25",
@@ -5834,6 +5840,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-03-17",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1347",
       "special": false,
       "label": "Agenda 03/17/26",
       "firstSeen": "2026-10-25",
@@ -6014,14 +6021,14 @@
           "topics": [],
           "ref": "MO-2026-72"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1347"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1GUCjZZ8NVZw7SkpnYLH11AAQ_SBuKHIA/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-03-12",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260312 Agenda March 12, 2026",
       "firstSeen": "2026-10-25",
@@ -6288,6 +6295,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-03-03",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1341",
       "special": false,
       "label": "Agenda 03/03/26",
       "firstSeen": "2026-10-25",
@@ -6408,14 +6416,14 @@
           ],
           "ref": "ORD-2026-3"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1341"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1Y-KfgeiCNEukCQgRX3SRDteZPhPEPEzL/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-02-26",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260226 Agenda February 26, 2026",
       "firstSeen": "2026-10-25",
@@ -6670,6 +6678,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-02-17",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1335",
       "special": false,
       "label": "Agenda 02/17/26",
       "firstSeen": "2026-10-25",
@@ -6812,14 +6821,14 @@
           ],
           "ref": "ORD-2026-3"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1335"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1HMm9wCgCcaiM1ih0L0aVdXvsef8-cEOa/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-02-12",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260212 Agenda February 12, 2026",
       "firstSeen": "2026-10-25",
@@ -7191,6 +7200,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-02-03",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1330",
       "special": false,
       "label": "Agenda 02/03/26",
       "firstSeen": "2026-10-25",
@@ -7285,14 +7295,14 @@
           ],
           "ref": "ORD-2026-1"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1330"
+      ]
     },
     {
       "url": "https://www.bgky.org/files/vgZucKQU.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-01-22",
       "time": "8:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "Special Work Session / Strategic Goal Planning Agenda 01/22/26",
       "firstSeen": "2026-10-25",
@@ -7303,6 +7313,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-01-22",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260122 Agenda January 22, 2026",
       "firstSeen": "2026-10-25",
@@ -7555,6 +7566,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-01-20",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1327",
       "special": false,
       "label": "Agenda 01/20/26",
       "firstSeen": "2026-10-25",
@@ -7635,14 +7647,14 @@
           "topics": [],
           "ref": "MO-2026-16"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1327"
+      ]
     },
     {
       "url": "https://drive.google.com/file/d/1zFPd0sfTcS5cTAvi55qSlG2vQ1_Ak-eA/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-01-14",
       "time": "3:00 PM",
+      "videoUrl": null,
       "special": true,
       "label": "260114 Agenda January 14, 2026 Special Called",
       "firstSeen": "2026-10-25",
@@ -7678,6 +7690,7 @@
       "body": "Warren County Fiscal Court",
       "date": "2026-01-08",
       "time": "9:00 AM",
+      "videoUrl": null,
       "special": false,
       "label": "260108 Agenda January 8, 2026",
       "firstSeen": "2026-10-25",
@@ -7853,6 +7866,7 @@
       "body": "Bowling Green City Commission",
       "date": "2026-01-06",
       "time": "4:30 PM",
+      "videoUrl": "https://www.bgky.org/videos/video/1325",
       "special": false,
       "label": "Agenda 01/06/26",
       "firstSeen": "2026-10-25",
@@ -7935,8 +7949,7 @@
           ],
           "ref": "ORD-2025-32"
         }
-      ],
-      "videoUrl": "https://www.bgky.org/videos/video/1325"
+      ]
     }
   ]
 }
