@@ -343,23 +343,29 @@ function sectionHtml({ body, records, splits, rollCalls, meetingCount, unattribu
 
 // ---------- Start ----------
 
-const [meetingsResponse, votesResponse] = await Promise.all([
-  fetch("data/meetings.json"),
-  fetch("data/votes.json"),
-]);
-const { meetings } = await meetingsResponse.json();
-const votes = votesResponse.ok ? await votesResponse.json() : {};
+try {
+  const [meetingsResponse, votesResponse] = await Promise.all([
+    fetch("data/meetings.json"),
+    fetch("data/votes.json"),
+  ]);
+  if (!meetingsResponse.ok) throw new Error(`meetings.json returned ${meetingsResponse.status}`);
 
-const sections = BODIES.map((body) => ({
-  body,
-  ...buildRecords(body, meetings, votes),
-}));
+  const { meetings } = await meetingsResponse.json();
+  const votes = votesResponse.ok ? await votesResponse.json() : {};
 
-const totalVotes = sections.reduce((sum, s) => sum + s.rollCalls, 0);
-const totalSplits = sections.reduce((sum, s) => sum + s.splits.length, 0);
-document.querySelector("#record-summary").textContent =
-  `${totalVotes} roll-call votes across both bodies. ${totalSplits} ${totalSplits === 1 ? "was" : "were"} not unanimous.`;
+  const sections = BODIES.map((body) => ({
+    body,
+    ...buildRecords(body, meetings, votes),
+  }));
 
-document.querySelector("#bodies").innerHTML = sections
-  .map(sectionHtml)
-  .join("");
+  const totalVotes = sections.reduce((sum, s) => sum + s.rollCalls, 0);
+  const totalSplits = sections.reduce((sum, s) => sum + s.splits.length, 0);
+  document.querySelector("#record-summary").textContent =
+    `${totalVotes} roll-call votes across both bodies. ${totalSplits} ${totalSplits === 1 ? "was" : "were"} not unanimous.`;
+
+  document.querySelector("#bodies").innerHTML = sections.map(sectionHtml).join("");
+} catch (err) {
+  console.error("Couldn't load voting data:", err);
+  document.querySelector("#record-summary").textContent =
+    "Voting data couldn't be loaded right now. Please try again later.";
+}

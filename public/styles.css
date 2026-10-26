@@ -941,7 +941,7 @@ details li { margin: 0.5rem 0; }
 }
 
 /* ---------- Collapsible filter groups ---------- */
-.filter-group { border-top: 1px solid var(--line); }
+.filter-group { margin: 0; border-top: 1px solid var(--line); }
 .filter-group:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
 
 .filter-group summary {
@@ -974,7 +974,13 @@ details li { margin: 0.5rem 0; }
 
 /* ---------- Collapsible sections ---------- */
 .collapsible { margin-bottom: 1rem; }
-.toggle-heading { margin: 0; font-size: 1.35rem; }
+/* Undo the older "main h2" underline and spacing for the collapsible headings. */
+main .collapsible .toggle-heading {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 1.35rem;
+}
 
 .section-toggle {
   display: flex;
@@ -1031,3 +1037,13 @@ details li { margin: 0.5rem 0; }
   .filter-group summary::after,
   .chevron { transition: none; }
 }
+
+/* The sign-up toggle looks like the sidebar's other buttons, not a card. */
+.alerts-toggle {
+  padding: 0.55rem 0.75rem;
+  font-weight: 700;
+  border-width: 1.5px;
+  border-radius: 6px;
+  box-shadow: none;
+}
+.alerts-toggle + .section-panel { margin-top: 0.75rem; }

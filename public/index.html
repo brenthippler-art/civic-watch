@@ -230,7 +230,13 @@
         <section class="alerts" id="alerts" aria-labelledby="alerts-heading">
           <h2 id="alerts-heading">Get alerts</h2>
           <p>Get an email as soon as a new agenda is posted.</p>
-
+          <p>Get an email as soon as a new agenda is posted.</p>
+          <button type="button" class="section-toggle alerts-toggle" aria-expanded="false" aria-controls="alert-signup">
+            <span>Sign up for email alerts</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div id="alert-signup" class="section-panel" hidden>
+          <form
           <form
             action="https://app.kit.com/forms/10098190/subscriptions"
             class="seva-form formkit-form alert-form"
@@ -310,6 +316,7 @@
             </p>
             <p class="alert-fineprint">No spam. Unsubscribe anytime.</p>
           </form>
+          </div>
         </section>
       </aside>
 

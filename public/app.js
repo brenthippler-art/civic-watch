@@ -450,6 +450,6 @@ try {
   goToLinkedMeeting(); // jump to #meeting-… if the URL has one
 } catch (err) {
   console.error("Couldn't load site data:", err);
-  document.querySelector("#upcoming").innerHTML =
-    `<p class="quiet">Meeting data couldn't be loaded right now. Please try again later.</p>`;
+  document.querySelector("#result-count").textContent =
+    "Meeting data couldn't be loaded right now. Please try again later.";
 }
