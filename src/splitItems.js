@@ -11,7 +11,7 @@ const ROUTINE = [
   /^adjourn/i,
   /personnel changes/i,
   /work schedule/i,
-  /approving the promotions? of/i,
+  /approving the promotions?\b/i,
   /probationary appointments?/i,
   /out-of-town travel/i,
 ];
