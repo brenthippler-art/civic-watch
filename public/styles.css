@@ -262,6 +262,128 @@ legend {
 
 .reset:hover { border-color: var(--ink); }
 
+/* ---------- Alerts signup (Kit form) ---------- */
+.alerts {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.alerts h2 { margin: 0 0 0.25rem; font-size: 1.2rem; }
+.alerts > p { margin: 0 0 0.75rem; font-size: 0.95rem; }
+
+.alert-form label[for="alert-email"] {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.alert-form .formkit-input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: 6px;
+}
+
+.alert-form .formkit-input:focus-visible { border-color: var(--ink); }
+
+.alert-bodies { margin: 0.9rem 0; padding: 0; border: 0; }
+
+.alert-form .check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0;
+}
+
+.alert-form .check input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.alert-form .check label { font-weight: 600; cursor: pointer; }
+
+.alert-form .formkit-submit {
+  position: relative;
+  width: 100%;
+  padding: 0.6rem;
+  font: inherit;
+  font-weight: 700;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--paper);
+  cursor: pointer;
+}
+
+.alert-form .formkit-submit:hover { opacity: 0.9; }
+
+/* Kit's script adds data-active to the button while it's sending. */
+.alert-form .formkit-spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.alert-form .formkit-submit[data-active] .formkit-spinner { display: flex; }
+.alert-form .formkit-submit[data-active] > span:last-child { visibility: hidden; }
+
+.alert-form .formkit-spinner span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--paper);
+  animation: alert-bounce 1.4s infinite ease-in-out both;
+}
+
+.alert-form .formkit-spinner span:nth-child(1) { animation-delay: -0.32s; }
+.alert-form .formkit-spinner span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes alert-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .alert-form .formkit-spinner span { animation: none; opacity: 0.7; }
+}
+
+/* Messages from Kit's script */
+.alerts .formkit-alert {
+  margin: 0 0 0.75rem;
+  padding: 0.6rem 0.75rem;
+  list-style: none;
+  border-radius: 0 6px 6px 0;
+  font-weight: 600;
+}
+
+.alerts .formkit-alert:empty { display: none; }
+
+.alerts .formkit-alert-error {
+  background: var(--red-soft);
+  border-left: 3px solid var(--red);
+  color: var(--red);
+}
+
+.alerts .formkit-alert-success {
+  background: var(--gold-soft);
+  border-left: 3px solid var(--gold);
+  color: var(--ink);
+}
+
+.alert-fineprint { margin: 0.6rem 0 0; font-size: 0.8rem; color: var(--muted); }
+.alert-fineprint a { color: inherit; }
+
 /* ---------- Meeting cards ---------- */
 .meeting {
   --accent: var(--navy);

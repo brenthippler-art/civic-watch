@@ -14,6 +14,8 @@ import { parseCityMinutes } from "./minutes/cityMinutes.js";
 import { parseCountyMinutes } from "./minutes/countyMinutes.js";
 import { localDateString, daysBetween } from "./dates.js";
 import { loadCorrections, applyCorrections } from "./corrections.js";
+import { writeFeeds } from "./feed.js";
+import { sendAgendaAlerts } from "./alerts.js";
 
 // ---- Options ----
 // Normal daily run:  node src/index.js
@@ -104,6 +106,8 @@ console.log(
     ? `Site data updated (${archive.meetings.length} meetings total).`
     : "Site data unchanged.",
 );
+const feedsChanged = await writeFeeds(archive.meetings);
+console.log(feedsChanged ? "Feeds updated." : "Feeds unchanged.");
 
 // ---- Website data: votes from minutes (both bodies) ----
 const votesArchive = await loadVotes();
@@ -177,3 +181,11 @@ if (process.argv.includes("--no-publish")) {
     process.exitCode = 1; // marks the run as failed in Task Scheduler
   }
 }
+
+// ---- Email alerts (after publishing, so the links work) ----
+// Turn off for one run with --no-email. Backfills never send alerts.
+const alertMode = isBackfill || process.argv.includes("--no-email")
+  ? "off"
+  : process.env.KIT_ALERT_MODE ?? "off";
+
+await sendAgendaAlerts(archive.meetings, alertMode);

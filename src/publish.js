@@ -3,7 +3,7 @@ import { localDateString } from "./dates.js";
 
 // Only the generated data gets auto-published. Changes to the site's code
 // (HTML, CSS, JS) you commit and push yourself, on purpose.
-const DATA_PATHS = ["public/data", "corrections.json"];
+const DATA_PATHS = ["public/data", "public/feeds", "corrections.json"];
 
 function git(...args) {
   return execFileSync("git", args, { encoding: "utf8" }).trim();
