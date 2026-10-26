@@ -16,6 +16,7 @@ import { localDateString, daysBetween } from "./dates.js";
 import { loadCorrections, applyCorrections } from "./corrections.js";
 import { writeFeeds } from "./feed.js";
 import { sendAgendaAlerts } from "./alerts.js";
+import { extractMeetingTime } from "./meetingTime.js";
 
 // ---- Options ----
 // Normal daily run:  node src/index.js
@@ -69,7 +70,7 @@ for (const [index, doc] of agendas.entries()) {
       ...item,
       topics: matchTopics(item.text),
     }));
-    entries.push({ doc, items, isNew: !seen.has(doc.url) });
+    entries.push({ doc, items, isNew: !seen.has(doc.url), time: extractMeetingTime(text) });
 
     if (isBackfill) {
       console.log(

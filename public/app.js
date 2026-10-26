@@ -12,14 +12,63 @@ let showOlder = false;
 let meetings = [];
 let votes = {};
 
+// How to take part, per governing body. Update contacts after elections.
+const PARTICIPATE = {
+  city: {
+    usualTime: "4:30 PM",
+    location:
+      "Commission Chamber, City Hall, 1001 College Street, Bowling Green",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=1001+College+Street+Bowling+Green+KY",
+    speak:
+      "Sign up to speak at the back of the Commission Chamber when you arrive. " +
+      "Speakers are called to the podium one at a time.",
+    watch: {
+      label: "Live on BGTV4 and online",
+      url: "https://www.bgky.org/videos",
+    },
+    contacts: [
+      { name: "Mayor Todd Alcott", email: "todd.alcott@bgky.org" },
+      { name: "Carlos Bailey", email: "carlos.bailey@bgky.org" },
+      { name: "Dana Beasley-Brown", email: "dana.beasleybrown@bgky.org" },
+      { name: "Melinda Hill", email: "melinda.hill@bgky.org" },
+      { name: "Sue Parrigin", email: "sue.parrigin@bgky.org" },
+    ],
+  },
+  county: {
+    usualTime: "9:00 AM",
+    location:
+      "Warren County Fiscal Courtroom, 429 East 10th Avenue, Bowling Green",
+    mapUrl:
+      "https://www.google.com/maps/search/?api=1&query=429+East+10th+Avenue+Bowling+Green+KY",
+    speak:
+      "To ask about speaking at a meeting, call the Fiscal Court office at 270-843-4146.",
+    watch: null, // add { label, url } once the county video link is confirmed
+    phone: { label: "270-843-4146", href: "tel:+12708434146" },
+    findMagistrate:
+      "https://bgky.maps.arcgis.com/apps/instant/sidebar/index.html?appid=1fba8d21efff42efb36b4fff8f7dbc8d",
+    officialsPage:
+      "https://www.warrencountyky.gov/departments/fiscal-court/#magistrates",
+  },
+};
+
 function escapeHtml(text) {
-  return text.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+  return text.replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
 }
 
 function formatDate(isoDate) {
   // Noon avoids a time-zone shift pushing the date back a day.
   return new Date(`${isoDate}T12:00:00`).toLocaleDateString("en-US", {
-    weekday: "long", month: "long", day: "numeric", year: "numeric",
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 }
 
@@ -42,7 +91,8 @@ function filtersActive() {
 
 function itemMatches(item) {
   if (filters.topic && !item.topics.includes(filters.topic)) return false;
-  if (filters.reading !== "any" && readingOf(item) !== filters.reading) return false;
+  if (filters.reading !== "any" && readingOf(item) !== filters.reading)
+    return false;
   // With no item filters on, show just the watchlist hits (the default view).
   if (!filtersActive()) return item.topics.length > 0;
   return true;
@@ -57,7 +107,8 @@ function voteHtml(vote) {
   const yeaCount = vote.yeaCount ?? vote.yeas?.length ?? 0;
   const nayCount = vote.nayCount ?? vote.nays.length;
   const failed = /denied|defeated|failed/.test(vote.outcome ?? "");
-  const label = vote.outcome === "tabled" ? "Tabled" : failed ? "Failed" : "Passed";
+  const label =
+    vote.outcome === "tabled" ? "Tabled" : failed ? "Failed" : "Passed";
 
   let noVoters = "";
   if (nayCount) {
@@ -75,9 +126,52 @@ function itemHtml(item, vote) {
   const readingTag = reading
     ? `<span class="tag reading">${reading === "first" ? "First reading" : "Second reading"}</span>`
     : "";
-  const topicTags = item.topics.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+  const topicTags = item.topics
+    .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+    .join("");
   const tags = voteHtml(vote) + readingTag + topicTags;
   return `<li>${escapeHtml(item.text)}${tags ? `<div class="tags">${tags}</div>` : ""}</li>`;
+}
+
+const NEW_TAB = `<span class="visually-hidden"> (opens in new tab)</span>`;
+
+function participateHtml(meeting) {
+  const info = PARTICIPATE[bodyKey(meeting)];
+  const time = meeting.time ?? info.usualTime;
+  const timeNote = meeting.time
+    ? ""
+    : ` <span class="quiet">(usual time; check the agenda)</span>`;
+
+  let contact;
+  if (info.contacts) {
+    contact = info.contacts
+      .map(
+        (c) =>
+          `<a href="mailto:${escapeHtml(c.email)}">${escapeHtml(c.name)}</a>`,
+      )
+      .join(", ");
+  } else {
+    contact =
+      `Fiscal Court office: <a href="${info.phone.href}">${info.phone.label}</a>. ` +
+      `<a href="${info.findMagistrate}" target="_blank" rel="noopener">Find your magistrate${NEW_TAB}</a> · ` +
+      `<a href="${info.officialsPage}" target="_blank" rel="noopener">All magistrates${NEW_TAB}</a>`;
+  }
+
+  const watch = info.watch
+    ? `<div><dt>Watch</dt><dd><a href="${info.watch.url}" target="_blank" rel="noopener">${escapeHtml(info.watch.label)}${NEW_TAB}</a></dd></div>`
+    : "";
+
+  return `
+    <div class="participate">
+      <h4>How to take part</h4>
+      <dl>
+        <div><dt>When</dt><dd>${formatDate(meeting.date)}, ${escapeHtml(time)}${timeNote}</dd></div>
+        <div><dt>Where</dt><dd><a href="${info.mapUrl}" target="_blank" rel="noopener">${escapeHtml(info.location)}<span class="visually-hidden"> (map, opens in new tab)</span></a></dd></div>
+        <div><dt>Speak</dt><dd>${escapeHtml(info.speak)}</dd></div>
+        ${watch}
+        <div><dt>Contact</dt><dd>${contact}</dd></div>
+      </dl>
+    </div>`;
 }
 
 function meetingHtml(meeting) {
@@ -97,7 +191,8 @@ function meetingHtml(meeting) {
   const meetingVotes = votes[meeting.url]?.votes ?? {};
   const minutesUrl = votes[meeting.url]?.minutesUrl;
   // City items match by ordinance/order number; county items by agenda item number.
-  const renderItem = (item) => itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`]);
+  const renderItem = (item) =>
+    itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`]);
 
   return `
     <article class="meeting ${bodyKey(meeting)}">
@@ -107,13 +202,15 @@ function meetingHtml(meeting) {
       </div>
       <div class="meeting-content">
         <h3>${escapeHtml(meeting.body)}</h3>
-        <p class="meta">
+                <p class="meta">
           ${formatDate(meeting.date)}
           ${meeting.special ? `<span class="badge">Special called</span>` : ""}
         </p>
-        ${matching.length
-          ? `<h4>${heading}</h4><ul class="flagged">${matching.map(renderItem).join("")}</ul>`
-          : `<p class="quiet">Nothing on the watchlist.</p>`}
+        ${
+          matching.length
+            ? `<h4>${heading}</h4><ul class="flagged">${matching.map(renderItem).join("")}</ul>`
+            : `<p class="quiet">Nothing on the watchlist.</p>`
+        }
         <details>
           <summary>All ${visible.length} non-routine items</summary>
           <ol>${visible.map(renderItem).join("")}</ol>
@@ -122,11 +219,13 @@ function meetingHtml(meeting) {
           <a class="source-link" href="${escapeHtml(meeting.url)}" target="_blank" rel="noopener">
             Official agenda <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
           </a>
-          ${minutesUrl
-            ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">
+          ${
+            minutesUrl
+              ? `<a class="source-link" href="${escapeHtml(minutesUrl)}" target="_blank" rel="noopener">
                  Minutes <span aria-hidden="true">↗</span><span class="visually-hidden">(opens in new tab)</span>
                </a>`
-            : ""}
+              : ""
+          }
         </p>
       </div>
     </article>`;
@@ -134,15 +233,22 @@ function meetingHtml(meeting) {
 
 // Topics only change when new data loads, so this runs once.
 function renderTopicOptions() {
-  const topics = [...new Set(meetings.flatMap((m) => m.items.flatMap((i) => i.topics)))].sort();
-  const options = [{ value: "", label: "All topics" }, ...topics.map((t) => ({ value: t, label: t }))];
+  const topics = [
+    ...new Set(meetings.flatMap((m) => m.items.flatMap((i) => i.topics))),
+  ].sort();
+  const options = [
+    { value: "", label: "All topics" },
+    ...topics.map((t) => ({ value: t, label: t })),
+  ];
 
   document.querySelector("#topic-options").innerHTML = options
-    .map((opt, i) => `
+    .map(
+      (opt, i) => `
       <div class="option">
         <input type="radio" id="topic-${i}" name="topic" value="${escapeHtml(opt.value)}" ${opt.value === filters.topic ? "checked" : ""} />
         <label for="topic-${i}">${escapeHtml(opt.label)}</label>
-      </div>`)
+      </div>`,
+    )
     .join("");
 }
 
@@ -156,11 +262,18 @@ function render() {
     .filter(Boolean);
 
   document.querySelector("#upcoming").innerHTML =
-    upcomingCards.join("") || `<p class="quiet">No upcoming meetings match.</p>`;
+    upcomingCards.join("") ||
+    `<p class="quiet">No upcoming meetings match.</p>`;
 
   const past = meetings.filter((m) => m.date < TODAY);
-  const recentCards = past.filter((m) => m.date >= PAST_CUTOFF).map(meetingHtml).filter(Boolean);
-  const olderCards = past.filter((m) => m.date < PAST_CUTOFF).map(meetingHtml).filter(Boolean);
+  const recentCards = past
+    .filter((m) => m.date >= PAST_CUTOFF)
+    .map(meetingHtml)
+    .filter(Boolean);
+  const olderCards = past
+    .filter((m) => m.date < PAST_CUTOFF)
+    .map(meetingHtml)
+    .filter(Boolean);
   const pastCards = showOlder ? [...recentCards, ...olderCards] : recentCards;
 
   const toggle = olderCards.length
@@ -170,10 +283,13 @@ function render() {
     : "";
 
   document.querySelector("#past").innerHTML =
-    (pastCards.join("") || `<p class="quiet">No past meetings in the last ${PAST_DAYS} days match.</p>`) + toggle;
+    (pastCards.join("") ||
+      `<p class="quiet">No past meetings in the last ${PAST_DAYS} days match.</p>`) +
+    toggle;
 
   const count = upcomingCards.length + pastCards.length;
-  document.querySelector("#result-count").textContent = `Showing ${count} meeting${count === 1 ? "" : "s"} in the last sixty days. Older meetings available at the bottom of the page.`;
+  document.querySelector("#result-count").textContent =
+    `Showing ${count} meeting${count === 1 ? "" : "s"} in the last sixty days. Older meetings available at the bottom of the page.`;
 }
 
 // ---------- Events ----------

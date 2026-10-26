@@ -16,12 +16,13 @@ export function mergeEntries(archive, entries) {
   // A Map keyed by URL: re-processing an agenda updates it instead of duplicating it.
   const byUrl = new Map(archive.meetings.map((m) => [m.url, m]));
 
-  for (const { doc, items } of entries) {
+  for (const { doc, items, time } of entries) {
     const existing = byUrl.get(doc.url);
     byUrl.set(doc.url, {
       url: doc.url,
       body: doc.body,
       date: localDateString(doc.date),
+      time: time ?? existing?.time ?? null,
       special: Boolean(doc.special),
       label: doc.label,
       firstSeen: existing?.firstSeen ?? localDateString(),
