@@ -1,8 +1,16 @@
 import { ordinanceInfo } from "./ordinance-key.js";
 import { PARTICIPATE } from "./participate.js";
-import { escapeHtml, todayString, longDate, bodyKey, meetingAnchor, readingOf } from "./shared.js";
+import {
+  escapeHtml,
+  todayString,
+  longDate,
+  bodyKey,
+  meetingAnchor,
+  readingOf,
+} from "./shared.js";
+import { setOpen, openSectionContaining } from "./disclosure.js";
 
-const TODAY = todayString()
+const TODAY = todayString();
 const PAST_DAYS = 60;
 const PAST_CUTOFF = (() => {
   const d = new Date();
@@ -40,18 +48,23 @@ function highlight(text) {
   const pattern = new RegExp(`(${terms.map(escapeRegex).join("|")})`, "gi");
   return text
     .split(pattern)
-    .map((part, i) => (i % 2 === 1 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part)))
+    .map((part, i) =>
+      i % 2 === 1 ? `<mark>${escapeHtml(part)}</mark>` : escapeHtml(part),
+    )
     .join("");
 }
 
 function filtersActive() {
-  return filters.topic !== "" || filters.reading !== "any" || filters.query !== "";
+  return (
+    filters.topic !== "" || filters.reading !== "any" || filters.query !== ""
+  );
 }
 
 function itemMatches(item) {
   if (filters.query && !matchesQuery(item.text)) return false;
   if (filters.topic && !item.topics.includes(filters.topic)) return false;
-  if (filters.reading !== "any" && readingOf(item) !== filters.reading) return false;
+  if (filters.reading !== "any" && readingOf(item) !== filters.reading)
+    return false;
   // With no item filters on, show just the watchlist hits (the default view).
   if (!filtersActive()) return item.topics.length > 0;
   return true;
@@ -85,7 +98,9 @@ function itemHtml(item, vote, meeting) {
   const readingTag = reading
     ? `<span class="tag reading">${reading === "first" ? "First reading" : "Second reading"}</span>`
     : "";
-  const topicTags = item.topics.map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join("");
+  const topicTags = item.topics
+    .map((t) => `<span class="tag">${escapeHtml(t)}</span>`)
+    .join("");
 
   const ordinance = ordinanceInfo(meeting, item);
   const historyLink = ordinance
@@ -103,8 +118,10 @@ const NEW_TAB = `<span class="visually-hidden"> (opens in new tab)</span>`;
 function meetingHtml(meeting) {
   if (filters.body !== "all" && bodyKey(meeting) !== filters.body) return "";
 
-    // While searching, include routine items too, so a search for a name still finds appointments.
-  const visible = filters.query ? meeting.items : meeting.items.filter((i) => !i.routine);
+  // While searching, include routine items too, so a search for a name still finds appointments.
+  const visible = filters.query
+    ? meeting.items
+    : meeting.items.filter((i) => !i.routine);
   const matching = visible.filter(itemMatches);
 
   if (filtersActive() && matching.length === 0) return "";
@@ -129,7 +146,7 @@ function meetingHtml(meeting) {
   }
 
   // City items match by ordinance/order number; county items by agenda item number.
-    const renderItem = (item) =>
+  const renderItem = (item) =>
     itemHtml(item, meetingVotes[item.ref ?? `ITEM-${item.number}`], meeting);
 
   return `
@@ -225,6 +242,10 @@ function render() {
       `<p class="quiet">${searching ? "No past meetings match." : `No past meetings in the last ${PAST_DAYS} days match.`}</p>`) +
     toggle;
 
+  // Counts on the collapsed section headings.
+  document.querySelector("#upcoming-count").textContent = meetingCount(upcomingCards.length);
+  document.querySelector("#past-count").textContent = meetingCount(pastCards.length);
+
   const count = upcomingCards.length + pastCards.length;
   const meetingsWord = `meeting${count === 1 ? "" : "s"}`;
   let summary;
@@ -233,7 +254,7 @@ function render() {
   } else if (showOlder) {
     summary = `Showing ${count} ${meetingsWord}, including older meetings.`;
   } else {
-    summary = `Showing ${count} ${meetingsWord} from the last 60 days. Older meetings are at the bottom of the page.`;
+    summary = `Showing ${count} ${meetingsWord} from the last 60 days. Older meetings are at the end of Past meetings.`;
   }
   document.querySelector("#result-count").textContent = summary;
 }
@@ -241,6 +262,37 @@ function render() {
 // ---------- Events ----------
 
 const form = document.querySelector("#filters");
+
+// Shows the current choice next to each collapsed filter: "Government · Both".
+function updateFilterSummaries() {
+  for (const current of form.querySelectorAll(".filter-current")) {
+    const checked = form.querySelector(
+      `input[name="${current.dataset.filter}"]:checked`,
+    );
+    const label = checked && form.querySelector(`label[for="${checked.id}"]`);
+    current.textContent = label ? label.textContent.trim() : "";
+  }
+}
+
+// After a search or filter change, open the sections that have results.
+function openSectionsWithResults() {
+  for (const id of ["upcoming", "past"]) {
+    const hasResults = Boolean(
+      document.getElementById(id).querySelector(".meeting"),
+    );
+    setOpen(document.querySelector(`[aria-controls="${id}"]`), hasResults);
+  }
+}
+
+// Back to the default view: every filter group and section closed.
+function collapseAll() {
+  for (const group of form.querySelectorAll(".filter-group"))
+    group.open = false;
+  for (const button of document.querySelectorAll(".section-toggle"))
+    setOpen(button, false);
+}
+
+const meetingCount = (n) => `${n} meeting${n === 1 ? "" : "s"}`;
 
 function readFilters() {
   const data = new FormData(form);
@@ -252,10 +304,13 @@ function readFilters() {
   };
 
   // Keep the search in the address bar, so a search can be shared as a link.
-  const url = filters.query ? `?q=${encodeURIComponent(filters.query)}` : location.pathname;
+  const url = filters.query
+    ? `?q=${encodeURIComponent(filters.query)}`
+    : location.pathname;
   history.replaceState(null, "", url);
-
+  updateFilterSummaries();
   render();
+  openSectionsWithResults();
 }
 
 // Wait until typing pauses before updating, so results don't redraw on every keystroke.
@@ -278,6 +333,7 @@ function resetFilters() {
   form.elements.query.value = "";
   form.querySelector('input[name="topic"][value=""]').checked = true;
   history.replaceState(null, "", location.pathname + location.hash);
+  updateFilterSummaries();
 }
 
 form.addEventListener("reset", (event) => {
@@ -285,6 +341,7 @@ form.addEventListener("reset", (event) => {
   resetFilters();
   showOlder = false;
   render();
+  collapseAll();
 });
 
 document.querySelector("#past").addEventListener("click", (event) => {
@@ -328,8 +385,10 @@ function goToLinkedMeeting({ smooth = false } = {}) {
 
   const card = document.getElementById(id);
   if (!card) return;
+    openSectionContaining(card);
 
-  const scrollToCard = (behavior) => card.scrollIntoView({ behavior, block: "start" });
+  const scrollToCard = (behavior) =>
+    card.scrollIntoView({ behavior, block: "start" });
 
   scrollToCard(smooth && !prefersReducedMotion ? "smooth" : "auto");
 
@@ -341,7 +400,9 @@ function goToLinkedMeeting({ smooth = false } = {}) {
   setTimeout(() => card.classList.remove("highlight"), 2500);
 }
 
-window.addEventListener("hashchange", () => goToLinkedMeeting({ smooth: true }));
+window.addEventListener("hashchange", () =>
+  goToLinkedMeeting({ smooth: true }),
+);
 
 document.addEventListener("click", async (event) => {
   const button = event.target.closest(".copy-link");
@@ -356,7 +417,9 @@ document.addEventListener("click", async (event) => {
   } catch {
     // Clipboard blocked (some browsers, or no HTTPS). Put the link in the address bar instead.
     history.replaceState(null, "", `#${button.dataset.anchor}`);
-    announce("Couldn't copy automatically. The link is now in your address bar.");
+    announce(
+      "Couldn't copy automatically. The link is now in your address bar.",
+    );
   }
 });
 
@@ -372,7 +435,7 @@ try {
   ({ meetings } = await meetingsResponse.json());
   votes = votesResponse.ok ? await votesResponse.json() : {};
 
-    renderTopicOptions();
+  renderTopicOptions();
 
   // A shared search link (?q=rezoning) starts with that search filled in.
   const sharedQuery = new URLSearchParams(location.search).get("q");
@@ -381,7 +444,9 @@ try {
     filters.query = sharedQuery.trim();
   }
 
+  updateFilterSummaries();
   render();
+  if (sharedQuery) openSectionsWithResults();
   goToLinkedMeeting(); // jump to #meeting-… if the URL has one
 } catch (err) {
   console.error("Couldn't load site data:", err);

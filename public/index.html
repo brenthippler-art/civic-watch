@@ -138,73 +138,92 @@
               For example: rezoning, Scottsville Road, data center
             </p>
           </div>
-          <fieldset>
-            <legend>Government</legend>
-            <div class="options">
-              <div class="option">
-                <input
-                  type="radio"
-                  id="body-all"
-                  name="body"
-                  value="all"
-                  checked
-                />
-                <label for="body-all">Both</label>
+          <details class="filter-group">
+            <summary>
+              <span class="filter-name">Government</span>
+              <span class="filter-current" data-filter="body"></span>
+            </summary>
+            <fieldset>
+              <legend class="visually-hidden">Government</legend>
+              <div class="options">
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="body-all"
+                    name="body"
+                    value="all"
+                    checked
+                  />
+                  <label for="body-all">Both</label>
+                </div>
+                <div class="option">
+                  <input type="radio" id="body-city" name="body" value="city" />
+                  <label for="body-city">City Commission</label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="body-county"
+                    name="body"
+                    value="county"
+                  />
+                  <label for="body-county">Fiscal Court</label>
+                </div>
               </div>
-              <div class="option">
-                <input type="radio" id="body-city" name="body" value="city" />
-                <label for="body-city">City Commission</label>
-              </div>
-              <div class="option">
-                <input
-                  type="radio"
-                  id="body-county"
-                  name="body"
-                  value="county"
-                />
-                <label for="body-county">Fiscal Court</label>
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
+          </details>
 
-          <fieldset>
-            <legend>Reading</legend>
-            <div class="options">
-              <div class="option">
-                <input
-                  type="radio"
-                  id="reading-any"
-                  name="reading"
-                  value="any"
-                  checked
-                />
-                <label for="reading-any">Any</label>
+          <details class="filter-group">
+            <summary>
+              <span class="filter-name">Reading</span>
+              <span class="filter-current" data-filter="reading"></span>
+            </summary>
+            <fieldset>
+              <legend class="visually-hidden">Reading</legend>
+              <div class="options">
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="reading-any"
+                    name="reading"
+                    value="any"
+                    checked
+                  />
+                  <label for="reading-any">Any</label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="reading-first"
+                    name="reading"
+                    value="first"
+                  />
+                  <label for="reading-first">First reading</label>
+                </div>
+                <div class="option">
+                  <input
+                    type="radio"
+                    id="reading-second"
+                    name="reading"
+                    value="second"
+                  />
+                  <label for="reading-second">Second reading</label>
+                </div>
               </div>
-              <div class="option">
-                <input
-                  type="radio"
-                  id="reading-first"
-                  name="reading"
-                  value="first"
-                />
-                <label for="reading-first">First reading</label>
-              </div>
-              <div class="option">
-                <input
-                  type="radio"
-                  id="reading-second"
-                  name="reading"
-                  value="second"
-                />
-                <label for="reading-second">Second reading</label>
-              </div>
-            </div>
-          </fieldset>
+            </fieldset>
+          </details>
 
-          <fieldset>
-            <legend>Topic</legend>
-            <div class="options" id="topic-options"></div>
-          </fieldset>
+          <details class="filter-group">
+            <summary>
+              <span class="filter-name">Topic</span>
+              <span class="filter-current" data-filter="topic"></span>
+            </summary>
+            <fieldset>
+              <legend class="visually-hidden">Topic</legend>
+
+              <div class="options" id="topic-options"></div>
+            </fieldset>
+          </details>
 
           <button type="reset" class="reset">Clear filters</button>
         </form>
@@ -298,14 +317,36 @@
         <p id="last-checked" class="last-checked" hidden></p>
         <p id="result-count" class="result-count" aria-live="polite"></p>
 
-        <section aria-labelledby="upcoming-heading">
-          <h2 id="upcoming-heading">Upcoming meetings</h2>
-          <div id="upcoming"></div>
+        <section class="collapsible" aria-labelledby="upcoming-heading">
+          <h2 id="upcoming-heading" class="toggle-heading">
+            <button
+              type="button"
+              class="section-toggle"
+              aria-expanded="false"
+              aria-controls="upcoming"
+            >
+              <span>Upcoming meetings</span>
+              <span class="toggle-count" id="upcoming-count"></span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+          </h2>
+          <div id="upcoming" class="section-panel" hidden></div>
         </section>
 
-        <section aria-labelledby="past-heading">
-          <h2 id="past-heading">Past meetings</h2>
-          <div id="past"></div>
+        <section class="collapsible" aria-labelledby="past-heading">
+          <h2 id="past-heading" class="toggle-heading">
+            <button
+              type="button"
+              class="section-toggle"
+              aria-expanded="false"
+              aria-controls="past"
+            >
+              <span>Past meetings (the last 60 days)</span>
+              <span class="toggle-count" id="past-count"></span>
+              <span class="chevron" aria-hidden="true"></span>
+            </button>
+          </h2>
+          <div id="past" class="section-panel" hidden></div>
         </section>
       </main>
     </div>

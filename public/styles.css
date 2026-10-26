@@ -939,3 +939,95 @@ details li { margin: 0.5rem 0; }
 @media (max-width: 540px) {
   .county-map { width: 64px; }
 }
+
+/* ---------- Collapsible filter groups ---------- */
+.filter-group { border-top: 1px solid var(--line); }
+.filter-group:last-of-type { border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
+
+.filter-group summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.25rem;
+  cursor: pointer;
+  list-style: none; /* hides the default triangle */
+}
+.filter-group summary::-webkit-details-marker { display: none; } /* Safari */
+
+.filter-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.filter-group summary:hover .filter-name { color: var(--ink); }
+
+.filter-current {
+  margin-left: auto;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: right;
+}
+
+.filter-group fieldset { margin: 0 0 0.75rem; }
+
+/* ---------- Collapsible sections ---------- */
+.collapsible { margin-bottom: 1rem; }
+.toggle-heading { margin: 0; font-size: 1.35rem; }
+
+.section-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.section-toggle:hover { border-color: var(--ink); }
+
+.toggle-count {
+  margin-left: auto;
+  font-family: var(--sans, "Source Sans 3", sans-serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.section-panel { margin-top: 1rem; }
+
+/* ---------- Chevrons: down when closed, up when open ---------- */
+.filter-group summary::after,
+.chevron {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.15s;
+}
+.filter-group summary::after { color: var(--muted); }
+.filter-group[open] summary::after,
+.section-toggle[aria-expanded="true"] .chevron {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.filter-group summary:focus-visible,
+.section-toggle:focus-visible {
+  outline: 3px solid #e0a526;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-group summary::after,
+  .chevron { transition: none; }
+}

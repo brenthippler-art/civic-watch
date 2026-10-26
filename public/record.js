@@ -1,4 +1,5 @@
 import { escapeHtml, shortDate, bodyKey, meetingAnchor } from "./shared.js";
+import "./disclosure.js";
 
 // Current members. Update after elections.
 // `key` is matched against the first four letters of names in the minutes.
@@ -310,30 +311,33 @@ function officialHtml(record, bodyKey) {
     </article>`;
 }
 
-function sectionHtml({
-  body,
-  records,
-  splits,
-  rollCalls,
-  meetingCount,
-  unattributed,
-}) {
+function sectionHtml({ body, records, splits, rollCalls, meetingCount, unattributed }) {
   const stats =
     `${rollCalls} roll-call votes from ${meetingCount} meetings · ` +
     `${splits.length} ${splits.length === 1 ? "was" : "were"} not unanimous`;
+  const summary = `${records.length} members · ${splits.length} split vote${splits.length === 1 ? "" : "s"}`;
 
   return `
-    <section class="record-body" aria-labelledby="heading-${body.key}">
-      <h2 id="heading-${body.key}">${escapeHtml(body.label)}</h2>
-      <p class="section-note">${stats}</p>
-      ${body.note ? `<p class="section-note">${escapeHtml(body.note)}</p>` : ""}
-      ${unattributed ? `<p class="section-note">${unattributed} vote${unattributed === 1 ? "" : "s"} couldn’t be credited to individuals.</p>` : ""}
+    <section class="record-body collapsible" aria-labelledby="heading-${body.key}">
+      <h2 id="heading-${body.key}" class="toggle-heading">
+        <button type="button" class="section-toggle" aria-expanded="false" aria-controls="panel-${body.key}">
+          <span>${escapeHtml(body.label)}</span>
+          <span class="toggle-count">${summary}</span>
+          <span class="chevron" aria-hidden="true"></span>
+        </button>
+      </h2>
 
-      <h3 class="subhead">Split votes</h3>
-      ${splits.map(splitHtml).join("") || `<p class="quiet">No split votes recorded yet.</p>`}
+      <div id="panel-${body.key}" class="section-panel" hidden>
+        <p class="section-note">${stats}</p>
+        ${body.note ? `<p class="section-note">${escapeHtml(body.note)}</p>` : ""}
+        ${unattributed ? `<p class="section-note">${unattributed} vote${unattributed === 1 ? "" : "s"} couldn’t be credited to individuals.</p>` : ""}
 
-      <h3 class="subhead">Members</h3>
-      <div class="officials">${records.map((r) => officialHtml(r, body.key)).join("")}</div>
+        <h3 class="subhead">Split votes</h3>
+        ${splits.map(splitHtml).join("") || `<p class="quiet">No split votes recorded yet.</p>`}
+
+        <h3 class="subhead">Members</h3>
+        <div class="officials">${records.map((r) => officialHtml(r, body.key)).join("")}</div>
+      </div>
     </section>`;
 }
 
