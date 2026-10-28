@@ -1,6 +1,252 @@
 {
   "meetings": [
     {
+      "url": "https://drive.google.com/file/d/1jhv8rdj4xlD1sw3BuRuwmKqKTHXT44fj/view",
+      "body": "Warren County Fiscal Court",
+      "date": "2026-10-29",
+      "time": "9:00 AM",
+      "videoUrl": null,
+      "special": false,
+      "label": "261029 Agenda October 29, 2026",
+      "firstSeen": "2026-10-28",
+      "items": [
+        {
+          "number": 1,
+          "section": null,
+          "text": "Invocation, Sarah Jane Zink, Sheriff’s Department Chaplain",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 2,
+          "section": null,
+          "text": "Pledge to the flag",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 3,
+          "section": null,
+          "text": "Roll call",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 4,
+          "section": null,
+          "text": "Approve minutes of the fiscal court meeting on October 15, 2026.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 5,
+          "section": null,
+          "text": "Approve personnel changes for Warren County.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 6,
+          "section": null,
+          "text": "Approve work schedule for the Warren County Road Department.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 7,
+          "section": null,
+          "text": "Approve second and final reading of Ordinance #26-23 Relating to the Annual Budget and Amendment Thereof.",
+          "routine": false,
+          "topics": [
+            "Budget & big spending",
+            "New ordinances"
+          ],
+          "ref": null
+        },
+        {
+          "number": 8,
+          "section": null,
+          "text": "Approve second and final reading of Ordinance #26-24WC Authorizing a Lighting Agreement Between Warren Rural Electric Cooperative Corporation and Bridleton Farms Subdivision.",
+          "routine": false,
+          "topics": [
+            "Utilities & water",
+            "New ordinances"
+          ],
+          "ref": null
+        },
+        {
+          "number": 9,
+          "section": null,
+          "text": "Approve lease agreement with Enterprise Fleet Management for (5) 2026 Toyota Tacoma trucks for Public Works in the amount not to exceed $800 each for 60 months. (Contracted Vendor) (Replacing Jeep Compasses used by Building and Electrical Services)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 10,
+          "section": null,
+          "text": "Approve determination in the amount of $18,000 to Schardein Mechanical for water heater replacement in the Justice Center. (Three quotes obtained. Lowest and best.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 11,
+          "section": null,
+          "text": "Approve 5-year contract with Axon Enterprises, Inc. in the amount of $100,000 per year for replacement of taser equipment for the jail. (Single source vendor. First year paid with Canteen funds at no cost to Warren County.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 12,
+          "section": null,
+          "text": "Accept quarterly financial report from Plano Fire Department.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 13,
+          "section": null,
+          "text": "Approve lease agreement with Enterprise Fleet for a 2027 Chevrolet Colorado for Stormwater in an amount not to exceed $900 per month for 60 months. This will replace an existing vehicle with expiring lease. (Contracted Vendor)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 14,
+          "section": null,
+          "text": "Make part of the record the updated United States Marshal Service Contract (36-month contract) effective November 1, 2026. The prisoner per diem rate is increasing from $64.00 to $73.00. The WCRJ deputy reimbursable hourly rate is increasing from $33.00 to $40.67.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 15,
+          "section": null,
+          "text": "Accept the 1st quarter financial report for Warren County.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 16,
+          "section": null,
+          "text": "Approve determination in the amount of $30,500 to Gary Force Honda for the purchase of a 2026 Honda Accord for Drug Taskforce. (Three quotes obtained. Lowest and best.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 17,
+          "section": null,
+          "text": "Approve Treasurer’s Report for September 2026.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 18,
+          "section": null,
+          "text": "Grant Judge Executive authority to execute the FY2026 Byrne JAG grant application for the County Attorney’s Office.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 19,
+          "section": null,
+          "text": "Approve determination in the amount of $28,295 to 911 Fleet and Fire Equipment for the purchase of personal flotation devices, throw bags, and wet suits for the Fire Department, (KYEM is reimbursing 50%) and authorize Judge Executive to execute all related documents.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 20,
+          "section": null,
+          "text": "Approve determination in the amount of $114,846 to WCDEDA for the Warren County 2025 Increment Payment to the Downtown TIF.",
+          "routine": false,
+          "topics": [
+            "Incentives & tax deals"
+          ],
+          "ref": null
+        },
+        {
+          "number": 21,
+          "section": null,
+          "text": "Approve Warren County Regional Jail Canteen Account Financial Report for September 2026.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 22,
+          "section": null,
+          "text": "Approve Order #26-45 Declaring Surplus Equipment for Parks and Rec.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 23,
+          "section": null,
+          "text": "Approve budget transfers for Warren County.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 24,
+          "section": null,
+          "text": "Approve determination in the amount of $6,029 to Miracle Recreation for the purchase of eight (8) new trash receptacles for Paradise Playground. (State price contract).",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 25,
+          "section": null,
+          "text": "Approve determination in the amount of $3,040 to Miracle Recreation for the purchase of fall zone matting for the new turf playgrounds. (State price contract)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 26,
+          "section": null,
+          "text": "Approve determination in the amount of $16,815 to Miracle Recreation for the replacement of an activity Pegasus net on the playground at Ed Spear Park that has become worn and is posing a safety hazard. (Purchase Pros)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 27,
+          "section": null,
+          "text": "Claims Department Heads Brett Hightower, Sheriff Lynette Yates, County Clerk Stephen Harmon, Jailer Chris Kummer, Executive Director, Parks & Recreation Josh Moore, Public Works Director Nikki Koller, Stormwater Director Holly Warren, Executive Director, Contractor’s Licensing Board Tommy Loving, Executive Director, Drug Task Force Ben Peterson, Executive Director, Planning & Zoning Demir Salvar, Facilities Director Bill Rector, Director of Public Safety Lawrence White, Solid Waste Director",
+          "routine": true,
+          "topics": [
+            "Land, zoning & annexation"
+          ],
+          "ref": null
+        },
+        {
+          "number": 28,
+          "section": null,
+          "text": "Adjourn",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        }
+      ]
+    },
+    {
       "url": "https://www.bgky.org/files/FSRB1MEL.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-10-20",
