@@ -1,11 +1,145 @@
 {
   "meetings": [
     {
+      "url": "https://www.bgky.org/files/wYLtgSd0.pdf",
+      "body": "Bowling Green City Commission",
+      "date": "2026-11-03",
+      "time": "4:30 PM",
+      "videoUrl": null,
+      "special": false,
+      "label": "Agenda 11/03/26",
+      "firstSeen": "2026-10-30",
+      "items": [
+        {
+          "number": 1,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 241 Municipal Order approving the promotion of Linda Lan to the position of Communications Dispatcher II in the Police Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-241"
+        },
+        {
+          "number": 2,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 242 Municipal Order approving the promotions of Trevor Cline to the position of Civil Engineer II and Dara Price to the position of Construction Coordinator II in the Public Works Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-242"
+        },
+        {
+          "number": 3,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 243 Municipal Order approving the probationary appointment of Tanner Hauck to the position of Landscape Gardener I in the Parks and Recreation Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-243"
+        },
+        {
+          "number": 4,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 244 Municipal Order approving the probationary appointment of Jordan Steenbergen to the position of Parks Facility Maintainer I in the Parks and Recreation Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-244"
+        },
+        {
+          "number": 5,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 245 Municipal Order accepting the City of Bowling Green, Kentucky Annual Comprehensive Financial Report for the period ended June 30, 2026 as prepared by the Department of Finance and audited by Cherry Bekaert LLP (Agenda-November 3, 2026)",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-245"
+        },
+        {
+          "number": 6,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 246 Municipal Order approving conveyance of City right-of-way on Fairview Avenue at Kereiakes Park to the Kentucky Transportation Cabinet and authorizing the Mayor to execute the deed and Memorandum of Understanding",
+          "routine": false,
+          "topics": [
+            "Land, zoning & annexation"
+          ],
+          "ref": "MO-2026-246"
+        },
+        {
+          "number": 7,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 247 Municipal Order approving the purchase of turnout gear from 911 Fleet & Fire Equipment in the amount of $87,620 through cooperative purchase under Kentucky State Pricing Contract",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-247"
+        },
+        {
+          "number": 8,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 248 Municipal Order approving Microsoft licensing for CAD hardware replacement in the amount of $124,336.96 with SHI International Corp through Omnia Partners Cooperative Purchasing Contract",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-248"
+        },
+        {
+          "number": 9,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 249 Municipal Order authorizing and accepting Bid #2027-12 for Fiscal Year 2027 street overlay project from Scotty’s Contracting & Stone, LLC in an amount not to exceed $2,460,787.07",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-249"
+        },
+        {
+          "number": 10,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 250 Municipal Order authorizing and accepting Bid #2027-13 for West Riverview Drive resurfacing from Scotty’s Contracting & Stone, LLC in an amount not to exceed $176,896.46",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-250"
+        },
+        {
+          "number": 11,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 251 Municipal Order authorizing an amendment to the contract and change order with Scott, Murphy & Daniel, LLC for the Guaranteed Maximum Price for Phase II of the Riverfront Park project in the amount of $12,071,358.75, and further authorizing direct purchases from various vendors in the amount of $1,496,421.73, for a total project cost not to exceed $14,552,445.58",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-251"
+        },
+        {
+          "number": 12,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Ordinance No. BG2026 – 17 ORDINANCE RENAMING STREET (Second Reading – Binding) Ordinance approving the renaming of a portion of Collett Lane to Ms. Betty Natcher Alley",
+          "routine": false,
+          "topics": [
+            "New ordinances"
+          ],
+          "ref": "ORD-2026-17"
+        },
+        {
+          "number": 13,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Ordinance No. BG2026 – 18 ORDINANCE CLOSING A PUBLIC RIGHT-OF-WAY (Second Reading – Binding) Ordinance approving the closing of unimproved right-of-way located north of Scott Street and west of and adjacent to 835 Scott Street (Agenda-November 3, 2026)",
+          "routine": false,
+          "topics": [
+            "Land, zoning & annexation",
+            "New ordinances"
+          ],
+          "ref": "ORD-2026-18"
+        },
+        {
+          "number": 14,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Ordinance No. BG2026 – 19 ORDINANCE CLOSING A PUBLIC RIGHT-OF-WAY (Second Reading – Binding) Ordinance approving the closing of unimproved rights-of-way located on Nugent Street and Barry Street and an unnamed alley south of Nugent Street",
+          "routine": false,
+          "topics": [
+            "Land, zoning & annexation",
+            "New ordinances"
+          ],
+          "ref": "ORD-2026-19"
+        }
+      ]
+    },
+    {
       "url": "https://drive.google.com/file/d/1jhv8rdj4xlD1sw3BuRuwmKqKTHXT44fj/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-10-29",
       "time": "9:00 AM",
-      "videoUrl": null,
+      "videoUrl": "https://www.youtube.com/watch?v=tN4tUG63OBw",
       "special": false,
       "label": "261029 Agenda October 29, 2026",
       "firstSeen": "2026-10-28",
