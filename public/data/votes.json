@@ -17756,5 +17756,478 @@
       "Williams",
       "Gorman"
     ]
+  },
+  "https://www.bgky.org/files/FSRB1MEL.pdf": {
+    "minutesUrl": "https://www.bgky.org/files/9oUiyZhp.pdf",
+    "votes": {
+      "MO-2026-215": {
+        "id": "MO-2026-215",
+        "motion": "Beasley-Brown",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-216": {
+        "id": "MO-2026-216",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-217": {
+        "id": "MO-2026-217",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-218": {
+        "id": "MO-2026-218",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-219": {
+        "id": "MO-2026-219",
+        "motion": "Hill",
+        "second": "Beasley-Brown",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-220": {
+        "id": "MO-2026-220",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-221": {
+        "id": "MO-2026-221",
+        "motion": null,
+        "second": null,
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-222": {
+        "id": "MO-2026-222",
+        "motion": "Hill",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-223": {
+        "id": "MO-2026-223",
+        "motion": "Parrigin",
+        "second": "Beasley-Brown",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-224": {
+        "id": "MO-2026-224",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-225": {
+        "id": "MO-2026-225",
+        "motion": "Parrigin",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-226": {
+        "id": "MO-2026-226",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-227": {
+        "id": "MO-2026-227",
+        "motion": "Hill",
+        "second": "Beasley-Brown",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-228": {
+        "id": "MO-2026-228",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-229": {
+        "id": "MO-2026-229",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-230": {
+        "id": "MO-2026-230",
+        "motion": "Hill",
+        "second": "Parrigin",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-231": {
+        "id": "MO-2026-231",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-232": {
+        "id": "MO-2026-232",
+        "motion": "Beasley-Brown",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-233": {
+        "id": "MO-2026-233",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-234": {
+        "id": "MO-2026-234",
+        "motion": "Parrigin",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-235": {
+        "id": "MO-2026-235",
+        "motion": null,
+        "second": null,
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-236": {
+        "id": "MO-2026-236",
+        "motion": "Hill",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "ORD-2026-17": {
+        "id": "ORD-2026-17",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "ORD-2026-18": {
+        "id": "ORD-2026-18",
+        "motion": "Hill",
+        "second": "Parrigin",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "ORD-2026-19": {
+        "id": "ORD-2026-19",
+        "motion": "Hill",
+        "second": "Beasley-Brown",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-237": {
+        "id": "MO-2026-237",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-238": {
+        "id": "MO-2026-238",
+        "motion": "Bailey",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-239": {
+        "id": "MO-2026-239",
+        "motion": "Parrigin",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-240": {
+        "id": "MO-2026-240",
+        "motion": "Bailey",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      }
+    },
+    "procedural": [
+      {
+        "description": "Motion to convene in closed session pursuant to KRS 61.810 (1) (b) and (c)",
+        "motion": "Hill",
+        "second": "Bailey",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      {
+        "description": "Motion to approve said minutes",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Beasley-Brown",
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": null
+      }
+    ],
+    "present": null
   }
 }

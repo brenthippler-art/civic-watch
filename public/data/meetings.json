@@ -1,11 +1,65 @@
 {
   "meetings": [
     {
+      "url": "https://drive.google.com/file/d/1YjwewIgf2VWXhYIBYCR1WSgTF_-GqH6F/view",
+      "body": "Warren County Fiscal Court",
+      "date": "2026-11-06",
+      "time": "1:00 PM",
+      "videoUrl": null,
+      "special": true,
+      "label": "261106 Agenda November 6, 2026 Special Called",
+      "firstSeen": "2026-11-04",
+      "items": [
+        {
+          "number": 1,
+          "section": null,
+          "text": "Roll call",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 2,
+          "section": null,
+          "text": "Appoint Joy Guess as Acting Clerk to serve for this meeting in the Fiscal Court Clerk’s absence.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 3,
+          "section": null,
+          "text": "Approve determination in the amount of $1,500,000 to SCKy Regional Development Authority for the South Central KY Workforce Pilot. (This is at no cost to Warren County. Funding was approved in the previous state legislative session from the Kentucky Cabinet for Economic Development.)",
+          "routine": false,
+          "topics": [
+            "Economic development"
+          ],
+          "ref": null
+        },
+        {
+          "number": 4,
+          "section": null,
+          "text": "Claims",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 5,
+          "section": null,
+          "text": "Adjourn",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        }
+      ]
+    },
+    {
       "url": "https://www.bgky.org/files/wYLtgSd0.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-11-03",
       "time": "4:30 PM",
-      "videoUrl": null,
+      "videoUrl": "https://www.bgky.org/videos/video/1412",
       "special": false,
       "label": "Agenda 11/03/26",
       "firstSeen": "2026-10-30",
