@@ -18229,5 +18229,62 @@
       }
     ],
     "present": null
+  },
+  "https://drive.google.com/file/d/1YjwewIgf2VWXhYIBYCR1WSgTF_-GqH6F/view": {
+    "minutesUrl": "https://drive.google.com/file/d/1XLD0tNs4_rlo1J8BuLNpsh94s-ilyTYK/view",
+    "votes": {
+      "ITEM-2": {
+        "id": "ITEM-2",
+        "description": "Motion to appoint Joy Guess as Acting Clerk to serve for this meeting in the Fiscal Court Clerk’s absence",
+        "motion": "Cummings",
+        "second": "Aldridge",
+        "tally": "five yeas, no nays, two absent",
+        "yeaCount": 5,
+        "nayCount": 0,
+        "abstainCount": 0,
+        "yeas": null,
+        "nays": [],
+        "abstain": [],
+        "inferred": false,
+        "outcome": "approved"
+      },
+      "ITEM-2#2": {
+        "id": "ITEM-2",
+        "description": "Motion to approve determination in the amount of $1,500,000 to SCKy Regional Development Authority for the South Central KY Workforce Pilot. (This is at no cost to Warren County. Funding was approved ",
+        "motion": "Williams",
+        "second": "Lasley",
+        "tally": "five yeas, no nays, two absent",
+        "yeaCount": 5,
+        "nayCount": 0,
+        "abstainCount": 0,
+        "yeas": null,
+        "nays": [],
+        "abstain": [],
+        "inferred": false,
+        "outcome": "approved"
+      },
+      "ITEM-3": {
+        "id": "ITEM-3",
+        "description": "Motion to approve claims as submitted",
+        "motion": "Cummings",
+        "second": "Aldridge",
+        "tally": "five yeas, no nays, two absent",
+        "yeaCount": 5,
+        "nayCount": 0,
+        "abstainCount": 0,
+        "yeas": null,
+        "nays": [],
+        "abstain": [],
+        "inferred": false,
+        "outcome": "approved"
+      }
+    },
+    "procedural": [],
+    "present": [
+      "Aldridge",
+      "Lasley",
+      "Williams",
+      "Gorman"
+    ]
   }
 }
