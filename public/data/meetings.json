@@ -1,6 +1,112 @@
 {
   "meetings": [
     {
+      "url": "https://www.bgky.org/files/4rGEQPuj.pdf",
+      "body": "Bowling Green City Commission",
+      "date": "2026-11-17",
+      "time": "4:30 PM",
+      "videoUrl": null,
+      "special": false,
+      "label": "Agenda 11/17/26",
+      "firstSeen": "2026-11-13",
+      "items": [
+        {
+          "number": 1,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 253 Municipal Order approving the career path advancement of Jagger Rone to Operations Maintenance Technician II, and David Adams and Austin Jones to the position of Operations Maintenance Technician III in the Public Works Department",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-253"
+        },
+        {
+          "number": 2,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 254 Municipal Order approving the promotion of Emily Gentry to the position of Human Resources Specialist in the Human Resources and Risk Management Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-254"
+        },
+        {
+          "number": 3,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 255 Municipal Order approving the transfer of Josiah Reckart to the position of Fire Code Inspector in the Fire Department",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-255"
+        },
+        {
+          "number": 4,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 256 Municipal Order approving the probationary appointment of Skylar Shymansky to the position of Firefighter in the Fire Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-256"
+        },
+        {
+          "number": 5,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 257 Municipal Order approving the probationary appointment of Patrick King to the position of Police Cadet II in the Police Department (Agenda-November 17, 2026)",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-257"
+        },
+        {
+          "number": 6,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 258 Municipal Order approving a reallocation funding request with Kentucky Infrastructure Authority on behalf of Bowling Green Municipal Utilities for the water recovery facility expansion and renovation project in the amount of $4,360,000",
+          "routine": false,
+          "topics": [
+            "Utilities & water"
+          ],
+          "ref": "MO-2026-258"
+        },
+        {
+          "number": 7,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 259 Municipal Order approving assignment of the franchise agreement to South Central Telecom, LLC, affiliate of South Central Rural Telecommunications Cooperative, formerly Stupp Fiber, LLC, for the use of rights-of-way for the operation and maintenance of a telecommunications (or related non- cable) system within the City of Bowling Green, Kentucky",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-259"
+        },
+        {
+          "number": 8,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 260 Municipal Order authorizing the submission of a grant application to the Kentucky Cabinet for Economic Development Talent Recruitment Grant Program in the amount of $16,000",
+          "routine": false,
+          "topics": [
+            "Economic development"
+          ],
+          "ref": "MO-2026-260"
+        },
+        {
+          "number": 9,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Resolution No. 2026 – 1 Resolution supporting the City of Bowling Green to become a Certified Kentucky Music Friendly Community and recommending Jeff Reed to serve as Local Music Ambassador for the Governor’s Office of Music",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 10,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 261 Municipal Order authorizing payment to the Warren County Property Valuation Administrator for Fiscal Year 2027",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-261"
+        },
+        {
+          "number": 11,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Ordinance No. BG2026 – 20 ORDINANCE RELATING TO BUDGET AMENDMENT (First Reading – Non-Binding) Ordinance approving Amendment Number One to the City of Bowling Green, Kentucky Annual Operating Budget for Fiscal Year 2027",
+          "routine": false,
+          "topics": [
+            "New ordinances"
+          ],
+          "ref": "ORD-2026-20"
+        }
+      ]
+    },
+    {
       "url": "https://drive.google.com/file/d/1VxsPrN9hN6vjaWKLcdAMcTQiLMOd2bm8/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-11-12",
