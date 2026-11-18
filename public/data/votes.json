@@ -18853,5 +18853,283 @@
       "Williams",
       "Gorman"
     ]
+  },
+  "https://www.bgky.org/files/wYLtgSd0.pdf": {
+    "minutesUrl": "https://www.bgky.org/files/9s0br56F.pdf",
+    "votes": {
+      "MO-2026-241": {
+        "id": "MO-2026-241",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-242": {
+        "id": "MO-2026-242",
+        "motion": "Parrigin",
+        "second": "Bailey",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-243": {
+        "id": "MO-2026-243",
+        "motion": null,
+        "second": null,
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-244": {
+        "id": "MO-2026-244",
+        "motion": "Bailey",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-245": {
+        "id": "MO-2026-245",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-246": {
+        "id": "MO-2026-246",
+        "motion": "Hill",
+        "second": "Bailey",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-247": {
+        "id": "MO-2026-247",
+        "motion": "Parrigin",
+        "second": "Bailey",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-248": {
+        "id": "MO-2026-248",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-249": {
+        "id": "MO-2026-249",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "MO-2026-250": {
+        "id": "MO-2026-250",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      "ORD-2026-17": {
+        "id": "ORD-2026-17",
+        "motion": "Beasley-Brown",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "adopted"
+      },
+      "ORD-2026-18": {
+        "id": "ORD-2026-18",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "adopted"
+      },
+      "ORD-2026-19": {
+        "id": "ORD-2026-19",
+        "motion": "Hill",
+        "second": "Beasley-Brown",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "adopted"
+      },
+      "MO-2026-252": {
+        "id": "MO-2026-252",
+        "motion": "Parrigin",
+        "second": "Hill",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      }
+    },
+    "procedural": [
+      {
+        "description": "Motion to convene in closed session pursuant to KRS 61.810 (1) (f)",
+        "motion": "Hill",
+        "second": "Parrigin",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      {
+        "description": "Motion to approve said minutes",
+        "motion": "Hill",
+        "second": "Parrigin",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": null
+      },
+      {
+        "description": "Motion to exceed $14,552,445.58",
+        "motion": "Beasley-Brown",
+        "second": "Parrigin for consideration of said Municipal Order. Meisel reviewed and recommended the approval to amend the contract and change order with Scott, Murphy & Daniel, LLC for the Guaranteed Maximum Price for Phase II of the Riverfront Park project in the amount of $12,071,358.75 and further authorizing direct purchases from various vendors in the amount of $1,496,421.73, for a total project cost not",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      },
+      {
+        "description": "Motion to add Municipal Order No. 2026 — 252 to the agenda",
+        "motion": "Hill",
+        "second": "Parrigin",
+        "yeas": [
+          "Hill",
+          "Parrigin",
+          "Bailey",
+          "Beasley-Brown",
+          "Alcott"
+        ],
+        "nays": [],
+        "abstain": [],
+        "outcome": "approved"
+      }
+    ],
+    "present": null
   }
 }
