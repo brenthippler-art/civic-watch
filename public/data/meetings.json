@@ -1,6 +1,275 @@
 {
   "meetings": [
     {
+      "url": "https://drive.google.com/file/d/1S3fUalQafwS-prKd6CxjPxSvucbxQLM8/view",
+      "body": "Warren County Fiscal Court",
+      "date": "2026-11-24",
+      "time": "9:00 AM",
+      "videoUrl": null,
+      "special": false,
+      "label": "261124 Agenda November 24, 2026",
+      "firstSeen": "2026-11-23",
+      "items": [
+        {
+          "number": 1,
+          "section": null,
+          "text": "Invocation, Pastor Garry Mitchell, Sheriff’s Department Chaplain.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 2,
+          "section": null,
+          "text": "Pledge to the flag",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 3,
+          "section": null,
+          "text": "Roll call",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 4,
+          "section": null,
+          "text": "Approve minutes of the fiscal court meeting on November 12, 2026.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 5,
+          "section": null,
+          "text": "Approve personnel changes for Warren County.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 6,
+          "section": null,
+          "text": "Approve work schedule for the Warren County Road Department.",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 7,
+          "section": null,
+          "text": "Approve second and final reading of Ordinance #26-25WC Establishing Hermitage Lane Located in Poplar Grove Subdivision Section 3 as a County Road and Authorizing Maintenance Thereon and Setting Speed Limit Thereon.",
+          "routine": false,
+          "topics": [
+            "New ordinances"
+          ],
+          "ref": null
+        },
+        {
+          "number": 8,
+          "section": null,
+          "text": "Approve second and final reading of Ordinance #26-26WC Authorizing a Lighting Agreement Between Warren Rural Electric Cooperative Corporation and Silverstone, Section 1 Subdivision.",
+          "routine": false,
+          "topics": [
+            "Utilities & water",
+            "New ordinances"
+          ],
+          "ref": null
+        },
+        {
+          "number": 9,
+          "section": null,
+          "text": "Approve the county contribution in the amount of $9,478.75 for the Karst Investigation Grant through the department of Aviation at the Regional Airport. (5% of the grant award cost share will be split between the city and county)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 10,
+          "section": null,
+          "text": "Approve contract with Springbrook for AI Invoicing Subscription. This is at no cost the first year, $4,250 the second year, and $7,500 the third year. (contracted vendor)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 11,
+          "section": null,
+          "text": "Approve determination in the amount of $2,750 to Boxhub for the purchase of two (2) Conex storage containers for use at Ed Spear Park. (Three quotes obtained. Lowest and best.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 12,
+          "section": null,
+          "text": "Approve Warren County Regional Jail Canteen Financial Account Report for October 2026.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 13,
+          "section": null,
+          "text": "Approve 2026 Budget Amendment for the Warren County Sheriff’s Office.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 14,
+          "section": null,
+          "text": "Approve determination in the amount of $10,248.89 To Charles Taylor TPA for Warren County Deductible in Claim VA20261732620.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 15,
+          "section": null,
+          "text": "Approve 2027 budget for the Warren County Sheriff’s Office.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 16,
+          "section": null,
+          "text": "Approve determination in the amount of $12,999.50 to WDM Lawn Care for emergency lighting for (2) new public safety vehicles. (Three quotes obtained. Lowest and best.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 17,
+          "section": null,
+          "text": "Approve determination in the amount of $19,097.41 to Vertosoft for OpenGov for Stormwater Domain and Professional Services software deployment. (Contracted Vendor)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 18,
+          "section": null,
+          "text": "Approve first reading of Ordinance #26-27WC Relating to the Addition of the Requirement of Knox Boxes Within Warren County.",
+          "routine": false,
+          "topics": [
+            "New ordinances"
+          ],
+          "ref": null
+        },
+        {
+          "number": 19,
+          "section": null,
+          "text": "Approve determination in the amount of $4,053 to Scott, Murphy & Daniel for a change order for weatherstripping for the three (3) tornado shelter locations (originally approved July 30, 2026).",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 20,
+          "section": null,
+          "text": "Approve determination in the amount of $152,380.95 to Atlantic Emergency Solutions for the purchase of SCBA air packs, tanks, and masks. (Plano Fire Department has been awarded a $160,000 grant from FEMA for this project. They will reimburse the county for 100% of this expense.)",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 21,
+          "section": null,
+          "text": "Approve Treasurer’s Report for October 2026.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 22,
+          "section": null,
+          "text": "Grant authority to advertise for preventative maintenance on the HVAC systems at all parks facilities.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 23,
+          "section": null,
+          "text": "Grant authority to advertise for fertilization and seeding of all parks properties.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 24,
+          "section": null,
+          "text": "Grant authority to advertise for ballfield supplies for parks department.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 25,
+          "section": null,
+          "text": "Grant authority to advertise for mulch for playgrounds for parks department.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 26,
+          "section": null,
+          "text": "Approve Order #26-50 Declaring Surplus Property (Vehicle for Sheriff's Office).",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 27,
+          "section": null,
+          "text": "Approve interfund transfers for Warren County.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 28,
+          "section": null,
+          "text": "Approve 2027 Fiscal Court meeting schedule.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 29,
+          "section": null,
+          "text": "Approve budget transfers for Warren County.",
+          "routine": false,
+          "topics": [],
+          "ref": null
+        },
+        {
+          "number": 30,
+          "section": null,
+          "text": "Claims Department Heads Brett Hightower, Sheriff Lynette Yates, County Clerk Stephen Harmon, Jailer Chris Kummer, Executive Director, Parks & Recreation Josh Moore, Public Works Director Nikki Koller, Stormwater Director Holly Warren, Executive Director, Contractor’s Licensing Board Tommy Loving, Executive Director, Drug Task Force Ben Peterson, Executive Director, Planning & Zoning Demir Salvar, Facilities Director Bill Rector, Director of Public Safety Lawrence White, Solid Waste Director",
+          "routine": true,
+          "topics": [
+            "Land, zoning & annexation"
+          ],
+          "ref": null
+        },
+        {
+          "number": 31,
+          "section": null,
+          "text": "Adjourn",
+          "routine": true,
+          "topics": [],
+          "ref": null
+        }
+      ]
+    },
+    {
       "url": "https://www.bgky.org/files/4rGEQPuj.pdf",
       "body": "Bowling Green City Commission",
       "date": "2026-11-17",
