@@ -1,11 +1,73 @@
 {
   "meetings": [
     {
+      "url": "https://www.bgky.org/files/upG6397g.pdf",
+      "body": "Bowling Green City Commission",
+      "date": "2026-12-01",
+      "time": "4:30 PM",
+      "videoUrl": null,
+      "special": false,
+      "label": "Agenda 12/01/26",
+      "firstSeen": "2026-11-24",
+      "items": [
+        {
+          "number": 1,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 262 Municipal Order approving the probationary appointment of Avery Smith to the position of Office Associate I in the Public Works Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-262"
+        },
+        {
+          "number": 2,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 263 Municipal Order approving the probationary appointment of Seth Medford to the position of Police Cadet II in the Police Department",
+          "routine": true,
+          "topics": [],
+          "ref": "MO-2026-263"
+        },
+        {
+          "number": 3,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 264 Municipal Order approving the Life Nav Collaborative Center Funding Agreement with Salvation Army",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-264"
+        },
+        {
+          "number": 4,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 265 Municipal Order authorizing and accepting an Airport Grant Agreement among the Bowling Green-Warren County Regional Airport Board, the City of Bowling Green, Warren County and the Kentucky Department of Aviation for Karst Topography at the airport",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-265"
+        },
+        {
+          "number": 5,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Municipal Order No. 2026 – 266 Municipal Order authorizing and accepting Bid #2027-04 for Risk Management Information System from Origami Risk LLC in an amount not to exceed $223,250 over a three year period (Agenda-December 1, 2026)",
+          "routine": false,
+          "topics": [],
+          "ref": "MO-2026-266"
+        },
+        {
+          "number": 6,
+          "section": "ITEMS FOR CONSIDERATION",
+          "text": "Ordinance No. BG2026 – 20 ORDINANCE RELATING TO BUDGET AMENDMENT (Second Reading – Binding) Ordinance approving Amendment Number One to the City of Bowling Green, Kentucky Annual Operating Budget for Fiscal Year 2027",
+          "routine": false,
+          "topics": [
+            "New ordinances"
+          ],
+          "ref": "ORD-2026-20"
+        }
+      ]
+    },
+    {
       "url": "https://drive.google.com/file/d/1S3fUalQafwS-prKd6CxjPxSvucbxQLM8/view",
       "body": "Warren County Fiscal Court",
       "date": "2026-11-24",
       "time": "9:00 AM",
-      "videoUrl": null,
+      "videoUrl": "https://www.youtube.com/watch?v=xsLFMxBeipg",
       "special": false,
       "label": "261124 Agenda November 24, 2026",
       "firstSeen": "2026-11-23",
